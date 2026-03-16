@@ -3,6 +3,58 @@
  * Método BDL: ⛵ + 💎 = 🦁
  */
 
+/* ── Registro / Gate ── */
+
+function isRegistered() {
+  return sessionStorage.getItem('academia_registered') === 'true';
+}
+
+function markRegistered() {
+  sessionStorage.setItem('academia_registered', 'true');
+}
+
+/**
+ * Genera el HTML de un placeholder de video con thumbnail + play dorado.
+ * @param {string} thumbUrl - URL del thumbnail (maxresdefault)
+ * @param {string} cursoId  - ID del curso para el modal
+ * @param {string} emoji    - Emoji fallback si no hay thumbnail
+ */
+function renderVideoGate(thumbUrl, cursoId, emoji) {
+  const bg = thumbUrl
+    ? `<img src="${thumbUrl}" alt="Vista previa" style="width:100%;height:100%;object-fit:cover;">`
+    : `<div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:4rem;opacity:0.15;">${emoji || '⛵ + 💎 = 🦁'}</div>`;
+
+  return `
+    <div class="video-gate" onclick="abrirModal('${cursoId}')" style="position:relative;width:100%;height:100%;cursor:pointer;border-radius:var(--radius-md,12px);overflow:hidden;">
+      ${bg}
+      <div style="position:absolute;inset:0;background:rgba(10,10,12,0.55);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0.75rem;">
+        <div style="width:68px;height:68px;border-radius:50%;border:2px solid #D4A574;display:flex;align-items:center;justify-content:center;background:rgba(10,10,12,0.6);transition:transform .2s;">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="#D4A574"><path d="M8 5v14l11-7z"/></svg>
+        </div>
+        <span style="color:#D4A574;font-size:0.85rem;font-weight:500;letter-spacing:0.03em;">Regístrate gratis para acceder</span>
+      </div>
+    </div>
+  `;
+}
+
+/**
+ * Retorna el thumbnail URL para un curso (maxresdefault).
+ */
+function getVideoThumbnail(curso) {
+  if (curso.youtubeId) return `https://img.youtube.com/vi/${curso.youtubeId}/maxresdefault.jpg`;
+  return null;
+}
+
+/**
+ * Carga el iframe de video real en un contenedor.
+ */
+function loadVideoEmbed(container, curso) {
+  const embedUrl = getYouTubeEmbedUrl(curso);
+  if (embedUrl) {
+    container.innerHTML = `<iframe src="${embedUrl}" title="${curso.titulo}" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
+  }
+}
+
 /* ── Header ── */
 function renderHeader(paginaActiva) {
   const nav = [
@@ -13,7 +65,6 @@ function renderHeader(paginaActiva) {
 
   const links = nav.map(item => {
     const isActive = item.id === paginaActiva ? ' class="active"' : '';
-    const href = paginaActiva === 'inicio' ? item.href : (item.href === 'index.html' ? 'index.html' : item.href);
     const adjustedHref = paginaActiva === 'inicio' ? item.href : item.href;
     return `<a href="${adjustedHref}"${isActive}>${item.label}</a>`;
   }).join('');
@@ -99,15 +150,25 @@ function renderCategoriaCard(cat) {
 /* ── Desafío Card ── */
 function renderDesafioCard(desafio) {
   const cat = CATEGORIAS[desafio.categoria];
-  let desafioEmbedUrl = null;
-  if (desafio.playlistId) {
-    desafioEmbedUrl = `https://www.youtube.com/embed/videoseries?list=${desafio.playlistId}`;
-  } else if (desafio.youtubeId) {
-    desafioEmbedUrl = `https://www.youtube.com/embed/${desafio.youtubeId}`;
+
+  // Video: gated si no está registrado
+  let videoContent;
+  const thumbId = desafio.youtubeId;
+  const thumbUrl = thumbId ? `https://img.youtube.com/vi/${thumbId}/maxresdefault.jpg` : null;
+
+  if (isRegistered()) {
+    let desafioEmbedUrl = null;
+    if (desafio.playlistId) {
+      desafioEmbedUrl = `https://www.youtube.com/embed/videoseries?list=${desafio.playlistId}`;
+    } else if (desafio.youtubeId) {
+      desafioEmbedUrl = `https://www.youtube.com/embed/${desafio.youtubeId}`;
+    }
+    videoContent = desafioEmbedUrl
+      ? `<iframe src="${desafioEmbedUrl}" title="${desafio.titulo}" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>`
+      : `<div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:3rem;opacity:0.2">${cat.emoji}</div>`;
+  } else {
+    videoContent = renderVideoGate(thumbUrl, desafio.cursoId || desafio.id, cat.emoji);
   }
-  const videoContent = desafioEmbedUrl
-    ? `<iframe src="${desafioEmbedUrl}" title="${desafio.titulo}" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>`
-    : `<div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:3rem;opacity:0.2">${cat.emoji}</div>`;
 
   const semanasHTML = desafio.semanas.map((semana, i) => `
     <div class="semana${i === 0 ? ' open' : ''}">
@@ -193,6 +254,16 @@ function toggleSemana(header) {
 }
 
 function reproducirLeccion(youtubeId, el) {
+  // Gate: require registration before playing any lesson
+  if (!isRegistered()) {
+    const cursoIdInput = document.getElementById('modalCursoId');
+    const cursoId = cursoIdInput ? cursoIdInput.value : '';
+    // Try to extract cursoId from URL
+    const urlCursoId = new URLSearchParams(window.location.search).get('id') || '';
+    abrirModal(cursoId || urlCursoId);
+    return;
+  }
+
   const videoContainer = document.getElementById('videoMainContainer');
   if (!videoContainer) return;
 
@@ -202,7 +273,6 @@ function reproducirLeccion(youtubeId, el) {
   if (youtubeId) {
     videoContainer.innerHTML = `<iframe src="https://www.youtube.com/embed/${youtubeId}?autoplay=1" title="Lección" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
   }
-  // Si no tiene youtubeId individual, no cambia el player (mantiene el playlist embed)
 }
 
 /* ── Modal de inscripción ── */
@@ -224,6 +294,10 @@ function abrirModal(cursoId) {
   // Store cursoId
   const cursoInput = document.getElementById('modalCursoId');
   if (cursoInput) cursoInput.value = cursoId || '';
+
+  // Reset error
+  const errorEl = overlay.querySelector('.modal-error');
+  if (errorEl) errorEl.style.display = 'none';
 
   overlay.classList.add('active');
 }
@@ -260,6 +334,9 @@ async function enviarInscripcion(e) {
 
     if (!res.ok) throw new Error('Error en el registro');
 
+    // Mark as registered
+    markRegistered();
+
     // Show success state
     const modal = document.querySelector('.modal');
     const form = modal.querySelector('.modal-form');
@@ -283,6 +360,9 @@ async function enviarInscripcion(e) {
     `;
     form.parentNode.insertBefore(successHTML, form.nextSibling);
 
+    // Unlock videos on current page (without reload)
+    unlockVideosOnPage();
+
   } catch (err) {
     btn.textContent = originalText;
     btn.disabled = false;
@@ -292,6 +372,48 @@ async function enviarInscripcion(e) {
       errorEl.style.display = 'block';
     }
   }
+}
+
+/**
+ * After successful registration, replace all video gates on the current page
+ * with their actual video embeds (without requiring a page reload).
+ */
+function unlockVideosOnPage() {
+  // Unlock curso.html main video
+  const videoMain = document.getElementById('videoMainContainer');
+  if (videoMain && videoMain.querySelector('.video-gate')) {
+    const cursoId = new URLSearchParams(window.location.search).get('id');
+    const curso = typeof getCurso === 'function' ? getCurso(cursoId) : null;
+    if (curso) {
+      loadVideoEmbed(videoMain, curso);
+    }
+  }
+
+  // Unlock desafio video gates
+  document.querySelectorAll('.desafio-video .video-gate').forEach(gate => {
+    const parent = gate.closest('.desafio-video');
+    if (!parent) return;
+    // Find which desafio this belongs to by matching the cursoId in onclick
+    const onclickAttr = gate.getAttribute('onclick') || '';
+    const match = onclickAttr.match(/abrirModal\('([^']+)'\)/);
+    if (match) {
+      const targetId = match[1];
+      const desafio = typeof DESAFIOS !== 'undefined'
+        ? DESAFIOS.find(d => (d.cursoId || d.id) === targetId)
+        : null;
+      if (desafio) {
+        let embedUrl = null;
+        if (desafio.playlistId) {
+          embedUrl = `https://www.youtube.com/embed/videoseries?list=${desafio.playlistId}`;
+        } else if (desafio.youtubeId) {
+          embedUrl = `https://www.youtube.com/embed/${desafio.youtubeId}`;
+        }
+        if (embedUrl) {
+          parent.innerHTML = `<iframe src="${embedUrl}" title="${desafio.titulo}" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
+        }
+      }
+    }
+  });
 }
 
 /* ── SEO ── */
@@ -352,6 +474,9 @@ function renderModal() {
       }
       @keyframes checkmark-draw {
         to { stroke-dashoffset: 0; }
+      }
+      .video-gate:hover div > div:first-child {
+        transform: scale(1.1);
       }
     </style>
     <div class="modal-overlay" id="modalOverlay">
