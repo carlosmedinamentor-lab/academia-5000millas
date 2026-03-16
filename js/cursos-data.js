@@ -39,8 +39,8 @@ const CATEGORIAS = {
 const CURSOS = [
   {
     id: 'desafio-28-dias-curso',
-    titulo: 'Un Encuentro Conmigo Mismo',
-    subtitulo: 'Desafío 28 días — Lecciones grabadas a las 3am en 2021',
+    titulo: 'Un Encuentro Conmigo Mismo: Desafío de 28 Días',
+    subtitulo: 'Lecciones grabadas a las 3am en 2021',
     categoria: 'diamante',
     nivel: 'Gratuito',
     duracion: '28 días',
@@ -49,7 +49,7 @@ const CURSOS = [
     destacado: true,
     youtubeId: '18S7wyLvZYw',
     playlistId: 'PLWxXlZghiePzTuw9oJseZVg8bgp4-o7Ll',
-    descripcion: '28 lecciones grabadas a las 3 de la mañana durante 2021 por Carlos Medina. Un viaje de transformación personal siguiendo el Método BDL: del autoconocimiento a la soberanía interior. Cada día es una inmersión profunda en una dimensión de tu ser. El carbón bajo presión se convierte en diamante.',
+    descripcion: 'Lecciones grabadas a las 3am en 2021, cuando mi viaje apenas comenzaba. 28 días de inmersión total en el Método BDL.',
     beneficios: [
       '28 días de transformación guiada',
       'Método BDL completo: Barco → Diamante → León',
@@ -61,72 +61,72 @@ const CURSOS = [
         titulo: 'Semana 1 — El Barco ⛵',
         descripcion: 'Autoconocimiento: zarpa hacia tu interior y descubre tu punto de partida real.',
         lecciones: [
-          { titulo: 'Día 1: Bienvenida al desafío', duracion: '15 min', youtubeId: '18S7wyLvZYw' },
-          { titulo: 'Día 2: El punto de partida', duracion: '20 min', youtubeId: 'PENDIENTE' },
-          { titulo: 'Día 3: Tus máscaras', duracion: '18 min', youtubeId: 'PENDIENTE' },
-          { titulo: 'Día 4: La herida fundacional', duracion: '22 min', youtubeId: 'PENDIENTE' },
-          { titulo: 'Día 5: Inventario de creencias', duracion: '20 min', youtubeId: 'PENDIENTE' },
-          { titulo: 'Día 6: Tu línea de tiempo', duracion: '19 min', youtubeId: 'PENDIENTE' },
-          { titulo: 'Día 7: El verdadero norte', duracion: '21 min', youtubeId: 'PENDIENTE' }
+          { titulo: 'Día 1: Bienvenida al desafío', duracion: 'Video' },
+          { titulo: 'Día 2: El punto de partida', duracion: 'Video' },
+          { titulo: 'Día 3: Tus máscaras', duracion: 'Video' },
+          { titulo: 'Día 4: La herida fundacional', duracion: 'Video' },
+          { titulo: 'Día 5: Inventario de creencias', duracion: 'Video' },
+          { titulo: 'Día 6: Tu línea de tiempo', duracion: 'Video' },
+          { titulo: 'Día 7: El verdadero norte', duracion: 'Video' }
         ]
       },
       {
         titulo: 'Semana 2 — El Diamante Interior 💎',
         descripcion: 'Transformación interna: el carbón bajo presión se convierte en diamante.',
         lecciones: [
-          { titulo: 'Día 8: La presión necesaria', duracion: '20 min', youtubeId: 'PENDIENTE' },
-          { titulo: 'Día 9: Salud mental', duracion: '22 min', youtubeId: 'PENDIENTE' },
-          { titulo: 'Día 10: Salud emocional', duracion: '18 min', youtubeId: 'PENDIENTE' },
-          { titulo: 'Día 11: Salud física', duracion: '20 min', youtubeId: 'PENDIENTE' },
-          { titulo: 'Día 12: Salud espiritual', duracion: '21 min', youtubeId: 'PENDIENTE' },
-          { titulo: 'Día 13: Salud relacional', duracion: '19 min', youtubeId: 'PENDIENTE' },
-          { titulo: 'Día 14: Integración interior', duracion: '23 min', youtubeId: 'PENDIENTE' }
+          { titulo: 'Día 8: La presión necesaria', duracion: 'Video' },
+          { titulo: 'Día 9: Salud mental', duracion: 'Video' },
+          { titulo: 'Día 10: Salud emocional', duracion: 'Video' },
+          { titulo: 'Día 11: Salud física', duracion: 'Video' },
+          { titulo: 'Día 12: Salud espiritual', duracion: 'Video' },
+          { titulo: 'Día 13: Salud relacional', duracion: 'Video' },
+          { titulo: 'Día 14: Integración interior', duracion: 'Video' }
         ]
       },
       {
         titulo: 'Semana 3 — El Diamante Exterior 💎',
         descripcion: 'Transformación externa: tu diamante interior empieza a brillar hacia afuera.',
         lecciones: [
-          { titulo: 'Día 15: Salud financiera', duracion: '20 min', youtubeId: 'PENDIENTE' },
-          { titulo: 'Día 16: Tu propósito', duracion: '22 min', youtubeId: 'PENDIENTE' },
-          { titulo: 'Día 17: Comunica tu valor', duracion: '18 min', youtubeId: 'PENDIENTE' },
-          { titulo: 'Día 18: Límites sanos', duracion: '20 min', youtubeId: 'PENDIENTE' },
-          { titulo: 'Día 19: Tu marca personal', duracion: '21 min', youtubeId: 'PENDIENTE' },
-          { titulo: 'Día 20: Sistemas que te sostienen', duracion: '19 min', youtubeId: 'PENDIENTE' },
-          { titulo: 'Día 21: El diamante brilla', duracion: '22 min', youtubeId: 'PENDIENTE' }
+          { titulo: 'Día 15: Salud financiera', duracion: 'Video' },
+          { titulo: 'Día 16: Tu propósito', duracion: 'Video' },
+          { titulo: 'Día 17: Comunica tu valor', duracion: 'Video' },
+          { titulo: 'Día 18: Límites sanos', duracion: 'Video' },
+          { titulo: 'Día 19: Tu marca personal', duracion: 'Video' },
+          { titulo: 'Día 20: Sistemas que te sostienen', duracion: 'Video' },
+          { titulo: 'Día 21: El diamante brilla', duracion: 'Video' }
         ]
       },
       {
         titulo: 'Semana 4 — El León 🦁',
         descripcion: 'Soberanía y liderazgo: tu verdadera identidad restaurada.',
         lecciones: [
-          { titulo: 'Día 22: La corona es tuya', duracion: '20 min', youtubeId: 'PENDIENTE' },
-          { titulo: 'Día 23: Decisiones de león', duracion: '22 min', youtubeId: 'PENDIENTE' },
-          { titulo: 'Día 24: El rugido — tu voz', duracion: '18 min', youtubeId: 'PENDIENTE' },
-          { titulo: 'Día 25: Lidera sirviendo', duracion: '20 min', youtubeId: 'PENDIENTE' },
-          { titulo: 'Día 26: Tu manada', duracion: '21 min', youtubeId: 'PENDIENTE' },
-          { titulo: 'Día 27: El legado', duracion: '19 min', youtubeId: 'PENDIENTE' },
-          { titulo: 'Día 28: El Génesis — 5.000 Millas', duracion: '25 min', youtubeId: 'PENDIENTE' }
+          { titulo: 'Día 22: La corona es tuya', duracion: 'Video' },
+          { titulo: 'Día 23: Decisiones de león', duracion: 'Video' },
+          { titulo: 'Día 24: El rugido — tu voz', duracion: 'Video' },
+          { titulo: 'Día 25: Lidera sirviendo', duracion: 'Video' },
+          { titulo: 'Día 26: Tu manada', duracion: 'Video' },
+          { titulo: 'Día 27: El legado', duracion: 'Video' },
+          { titulo: 'Día 28: El Génesis — 5.000 Millas', duracion: 'Video' }
         ]
       }
     ]
   },
   {
     id: 'despierta-7-dias',
-    titulo: 'Despierta o Morirás Dos Veces',
-    subtitulo: 'El desafío de despertar tu grandeza en 7 días — Basado en el libro de Carlos Medina',
+    titulo: 'Despierta o Morirás Dos Veces: Desafío de 7 Días',
+    subtitulo: 'Basado en el libro de Carlos Medina',
     categoria: 'barco',
     nivel: 'Gratuito',
     duracion: '7 días',
     totalLecciones: 8,
     gratuito: true,
     destacado: true,
-    youtubeId: 'PENDIENTE',
+    youtubeId: null,
     playlistId: 'PLWxXlZghiePx6gJI_hN6Upoz83u-Dy4n5',
-    descripcion: 'Basado en el libro "Despierta o morirás dos veces" de Carlos Medina. Un desafío de 7 días para despertar tu grandeza. Fortalece las 7 dimensiones de tu vida: física, mental, emocional, espiritual, relacional, vocacional y financiera. La primera muerte es no vivir; la segunda, que nadie lo note.',
+    descripcion: 'Basado en el libro de Carlos Medina. 7 días para despertar tu grandeza fortaleciendo las 7 dimensiones: física, mental, emocional, espiritual, relacional, vocacional y financiera.',
     beneficios: [
       'Despierta tu grandeza en 7 días',
-      'Basado en el libro bestseller de Carlos Medina',
+      'Basado en el libro de Carlos Medina',
       'Fortalece 7 dimensiones de vida',
       'Ejercicios prácticos diarios'
     ],
@@ -135,26 +135,26 @@ const CURSOS = [
         titulo: 'Módulo 1: El Despertar',
         descripcion: 'Introducción al desafío y los primeros pasos del despertar.',
         lecciones: [
-          { titulo: 'Introducción: Despierta o morirás dos veces', duracion: '20 min', youtubeId: 'PENDIENTE' },
-          { titulo: 'Día 1: La primera muerte — no vivir', duracion: '18 min', youtubeId: 'PENDIENTE' },
-          { titulo: 'Día 2: Tu historia no es tu destino', duracion: '22 min', youtubeId: 'PENDIENTE' }
+          { titulo: 'Introducción: Despierta o morirás dos veces', duracion: 'Video' },
+          { titulo: 'Día 1: La primera muerte — no vivir', duracion: 'Video' },
+          { titulo: 'Día 2: Tu historia no es tu destino', duracion: 'Video' }
         ]
       },
       {
         titulo: 'Módulo 2: Las Dimensiones',
         descripcion: 'Fortalece las dimensiones de tu bienestar integral.',
         lecciones: [
-          { titulo: 'Día 3: Dimensión física y mental', duracion: '20 min', youtubeId: 'PENDIENTE' },
-          { titulo: 'Día 4: Dimensión emocional y espiritual', duracion: '19 min', youtubeId: 'PENDIENTE' },
-          { titulo: 'Día 5: Dimensión relacional', duracion: '21 min', youtubeId: 'PENDIENTE' }
+          { titulo: 'Día 3: Dimensión física y mental', duracion: 'Video' },
+          { titulo: 'Día 4: Dimensión emocional y espiritual', duracion: 'Video' },
+          { titulo: 'Día 5: Dimensión relacional', duracion: 'Video' }
         ]
       },
       {
         titulo: 'Módulo 3: La Grandeza',
         descripcion: 'Despierta tu grandeza y establece tu nueva identidad.',
         lecciones: [
-          { titulo: 'Día 6: Dimensión vocacional y financiera', duracion: '22 min', youtubeId: 'PENDIENTE' },
-          { titulo: 'Día 7: El despertar — tu nueva identidad', duracion: '25 min', youtubeId: 'PENDIENTE' }
+          { titulo: 'Día 6: Dimensión vocacional y financiera', duracion: 'Video' },
+          { titulo: 'Día 7: El despertar — tu nueva identidad', duracion: 'Video' }
         ]
       }
     ]
@@ -162,7 +162,7 @@ const CURSOS = [
   {
     id: 'workshop-5000-millas',
     titulo: 'Workshop 5.000 Millas',
-    subtitulo: 'Masterclass completa del Método BDL — ⛵ + 💎 = 🦁',
+    subtitulo: 'Masterclass completa del movimiento 5.000 Millas',
     categoria: 'leon',
     nivel: 'Gratuito',
     duracion: '1 sesión',
@@ -170,11 +170,12 @@ const CURSOS = [
     gratuito: true,
     destacado: true,
     youtubeId: 'WtVrY9SKB84',
-    descripcion: 'Workshop completo del Método 5.000 Millas impartido por Carlos Medina. Una masterclass intensiva que recorre las tres fases del método BDL: el Barco (autoconocimiento), el Diamante (transformación) y el León (liderazgo). Todo lo que necesitas saber sobre la ecuación ⛵ + 💎 = 🦁 en una sola sesión.',
+    playlistId: null,
+    descripcion: 'Masterclass completa del movimiento 5.000 Millas. Visión, método BDL y plan de acción.',
     beneficios: [
       'Método BDL completo en una sesión',
       'Masterclass intensiva con Carlos Medina',
-      'La ecuación ⛵ + 💎 = 🦁 explicada',
+      'Visión, método y plan de acción',
       'Herramientas prácticas inmediatas'
     ],
     modulos: [
@@ -263,7 +264,7 @@ const DESAFIOS = [
     categoria: 'barco',
     gratuito: true,
     activo: true,
-    youtubeId: 'PENDIENTE',
+    youtubeId: null,
     playlistId: 'PLWxXlZghiePx6gJI_hN6Upoz83u-Dy4n5',
     cursoId: 'despierta-7-dias',
     descripcion: 'Basado en el libro "Despierta o morirás dos veces" de Carlos Medina. 7 días para despertar tu grandeza fortaleciendo las 7 dimensiones de tu vida.',
@@ -325,8 +326,23 @@ function getDesafiosActivos() {
 }
 
 function getYouTubeThumbnail(youtubeId) {
-  if (!youtubeId || youtubeId === 'REEMPLAZAR' || youtubeId === 'PENDIENTE') return null;
+  if (!youtubeId) return null;
   return `https://img.youtube.com/vi/${youtubeId}/hqdefault.jpg`;
+}
+
+/**
+ * Genera la URL de embed de YouTube.
+ * Si el curso tiene playlistId, usa el embed de playlist completa.
+ * Si solo tiene youtubeId, usa el embed de video individual.
+ */
+function getYouTubeEmbedUrl(curso) {
+  if (curso.playlistId) {
+    return `https://www.youtube.com/embed/videoseries?list=${curso.playlistId}`;
+  }
+  if (curso.youtubeId) {
+    return `https://www.youtube.com/embed/${curso.youtubeId}`;
+  }
+  return null;
 }
 
 function getCategoria(id) {

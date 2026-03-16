@@ -59,10 +59,11 @@
       setMetaTags(curso.titulo, curso.descripcion);
       addCourseSchema(curso);
 
-      // Video principal
+      // Video principal — usa playlist embed si hay playlistId
       const videoContainer = document.getElementById('videoMainContainer');
-      if (curso.youtubeId && curso.youtubeId !== 'REEMPLAZAR') {
-        videoContainer.innerHTML = `<iframe src="https://www.youtube.com/embed/${curso.youtubeId}" title="${curso.titulo}" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
+      const embedUrl = getYouTubeEmbedUrl(curso);
+      if (embedUrl) {
+        videoContainer.innerHTML = `<iframe src="${embedUrl}" title="${curso.titulo}" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
       } else {
         videoContainer.innerHTML = `<div class="curso-video-placeholder">${cat.emoji}</div>`;
       }
