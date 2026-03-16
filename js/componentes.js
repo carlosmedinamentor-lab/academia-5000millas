@@ -147,6 +147,7 @@ function renderDesafioCard(desafio) {
         </div>
         <div class="desafio-titulo">${desafio.titulo}</div>
         <div class="desafio-subtitulo">${desafio.subtitulo}</div>
+        ${desafio.activo ? `<button class="btn btn-primary" style="margin:1rem 0;" onclick="abrirModal('${desafio.cursoId || desafio.id}')">Empezar desafío gratis</button>` : ''}
         ${desafio.semanas.length > 0 ? `<div class="desafio-semanas">${semanasHTML}</div>` : '<p style="color:var(--blanco-muted);font-style:italic;">Contenido próximamente...</p>'}
       </div>
     </div>
@@ -205,9 +206,26 @@ function reproducirLeccion(youtubeId, el) {
 }
 
 /* ── Modal de inscripción ── */
-function abrirModal() {
+
+const GHL_WEBHOOK_URL = 'https://services.leadconnectorhq.com/hooks/JjPQcPMDSUM4LdEE0pGZ/webhook-trigger/063252d6-0065-4c4c-9316-0f4206d732b9';
+
+function abrirModal(cursoId) {
   const overlay = document.getElementById('modalOverlay');
-  if (overlay) overlay.classList.add('active');
+  if (!overlay) return;
+
+  // Reset modal to form state
+  const form = overlay.querySelector('.modal-form');
+  const successEl = overlay.querySelector('.modal-success');
+  if (form) form.style.display = '';
+  if (successEl) successEl.remove();
+  overlay.querySelector('h3').textContent = 'Empieza tu transformación';
+  overlay.querySelector('.modal-subtitle').textContent = 'Ingresa tus datos para acceder al contenido gratuito.';
+
+  // Store cursoId
+  const cursoInput = document.getElementById('modalCursoId');
+  if (cursoInput) cursoInput.value = cursoId || '';
+
+  overlay.classList.add('active');
 }
 
 function cerrarModal() {
@@ -215,18 +233,65 @@ function cerrarModal() {
   if (overlay) overlay.classList.remove('active');
 }
 
-function enviarInscripcion(e) {
+async function enviarInscripcion(e) {
   e.preventDefault();
-  const nombre = document.getElementById('modalNombre').value;
-  const email = document.getElementById('modalEmail').value;
-  const whatsapp = document.getElementById('modalWhatsapp').value;
-  const cursoTitulo = document.getElementById('modalCurso')?.value || 'Curso Premium';
+  const btn = e.target.querySelector('button[type="submit"]');
+  const originalText = btn.textContent;
+  btn.textContent = 'Enviando...';
+  btn.disabled = true;
 
-  const mensaje = encodeURIComponent(
-    `¡Hola! Soy ${nombre} y quiero inscribirme en "${cursoTitulo}" de Academia 5.000 Millas.\n\nEmail: ${email}\nWhatsApp: ${whatsapp}`
-  );
-  window.open(`https://wa.me/?text=${mensaje}`, '_blank');
-  cerrarModal();
+  const firstName = document.getElementById('modalNombre').value.trim();
+  const email = document.getElementById('modalEmail').value.trim();
+  const phone = document.getElementById('modalWhatsapp').value.trim();
+  const cursoId = document.getElementById('modalCursoId')?.value || '';
+
+  try {
+    const res = await fetch(GHL_WEBHOOK_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        firstName,
+        email,
+        phone,
+        curso: cursoId,
+        source: 'Academia 5.000 Millas'
+      })
+    });
+
+    if (!res.ok) throw new Error('Error en el registro');
+
+    // Show success state
+    const modal = document.querySelector('.modal');
+    const form = modal.querySelector('.modal-form');
+    form.style.display = 'none';
+    modal.querySelector('h3').textContent = '';
+    modal.querySelector('.modal-subtitle').textContent = '';
+
+    const cursoUrl = cursoId ? `curso.html?id=${cursoId}` : 'catalogo.html';
+    const successHTML = document.createElement('div');
+    successHTML.className = 'modal-success';
+    successHTML.innerHTML = `
+      <div class="modal-checkmark">
+        <svg viewBox="0 0 52 52" width="64" height="64">
+          <circle cx="26" cy="26" r="25" fill="none" stroke="#D4A574" stroke-width="2" class="checkmark-circle"/>
+          <path fill="none" stroke="#D4A574" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" d="M14 27l8 8 16-16" class="checkmark-path"/>
+        </svg>
+      </div>
+      <h3 style="font-family:var(--font-display);color:var(--oro);margin:1rem 0 0.5rem;">¡Tu viaje comienza ahora!</h3>
+      <p style="color:var(--blanco-muted);margin-bottom:1.5rem;">Revisa tu email para acceder al curso.</p>
+      <a href="${cursoUrl}" class="btn btn-primary btn-lg">Acceder al curso</a>
+    `;
+    form.parentNode.insertBefore(successHTML, form.nextSibling);
+
+  } catch (err) {
+    btn.textContent = originalText;
+    btn.disabled = false;
+    const errorEl = e.target.querySelector('.modal-error');
+    if (errorEl) {
+      errorEl.textContent = 'Hubo un problema. Inténtalo de nuevo.';
+      errorEl.style.display = 'block';
+    }
+  }
 }
 
 /* ── SEO ── */
@@ -269,17 +334,38 @@ function addCourseSchema(curso) {
 /* ── Render Modal HTML ── */
 function renderModal() {
   return `
+    <style>
+      .modal-success { text-align: center; padding: 1rem 0; }
+      .modal-checkmark { margin: 0 auto 0.5rem; }
+      .checkmark-circle {
+        stroke-dasharray: 157;
+        stroke-dashoffset: 157;
+        animation: checkmark-circle 0.6s ease-out forwards;
+      }
+      .checkmark-path {
+        stroke-dasharray: 48;
+        stroke-dashoffset: 48;
+        animation: checkmark-draw 0.4s 0.4s ease-out forwards;
+      }
+      @keyframes checkmark-circle {
+        to { stroke-dashoffset: 0; }
+      }
+      @keyframes checkmark-draw {
+        to { stroke-dashoffset: 0; }
+      }
+    </style>
     <div class="modal-overlay" id="modalOverlay">
       <div class="modal">
         <button class="modal-close" onclick="cerrarModal()">&times;</button>
-        <h3>Inscríbete al curso</h3>
-        <p>Completa tus datos y te contactaremos por WhatsApp.</p>
+        <h3>Empieza tu transformación</h3>
+        <p class="modal-subtitle">Ingresa tus datos para acceder al contenido gratuito.</p>
         <form class="modal-form" onsubmit="enviarInscripcion(event)">
-          <input type="hidden" id="modalCurso" value="">
+          <input type="hidden" id="modalCursoId" value="">
           <input type="text" class="modal-input" id="modalNombre" placeholder="Tu nombre" required>
           <input type="email" class="modal-input" id="modalEmail" placeholder="Tu email" required>
-          <input type="tel" class="modal-input" id="modalWhatsapp" placeholder="Tu WhatsApp" required>
-          <button type="submit" class="btn btn-primary btn-lg">Enviar por WhatsApp</button>
+          <input type="tel" class="modal-input" id="modalWhatsapp" placeholder="Tu WhatsApp (opcional)">
+          <div class="modal-error" style="display:none;color:#e74c3c;font-size:0.875rem;margin-bottom:0.5rem;"></div>
+          <button type="submit" class="btn btn-primary btn-lg">Empezar ahora — Gratis</button>
         </form>
       </div>
     </div>
