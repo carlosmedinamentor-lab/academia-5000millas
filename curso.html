@@ -90,9 +90,7 @@
       `;
 
       // Sidebar
-      const ctaButton = curso.gratuito
-        ? `<a href="#" class="btn btn-primary sidebar-cta" onclick="event.preventDefault();document.querySelector('.modulo .leccion')?.click();">Comenzar curso</a>`
-        : `<button class="btn btn-primary sidebar-cta" onclick="document.getElementById('modalCurso').value='${curso.titulo}';abrirModal();">Inscribirme</button>`;
+      const ctaButton = `<button class="btn btn-primary sidebar-cta" onclick="abrirModal('${curso.id}')">Empezar ahora — Gratis</button>`;
 
       document.getElementById('cursoSidebar').innerHTML = `
         <div class="sidebar-card">

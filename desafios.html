@@ -37,6 +37,7 @@
   </main>
 
   <div id="footer"></div>
+  <div id="modalContainer"></div>
 
   <script src="js/cursos-data.js"></script>
   <script src="js/componentes.js"></script>
@@ -49,6 +50,7 @@
       grid.innerHTML += renderDesafioCard(desafio);
     });
 
+    document.getElementById('modalContainer').innerHTML = renderModal();
     initComponents();
   </script>
 </body>
