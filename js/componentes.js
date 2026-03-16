@@ -6,11 +6,20 @@
 /* ── Registro / Gate ── */
 
 function isRegistered() {
-  return sessionStorage.getItem('academia_registered') === 'true';
+  return localStorage.getItem('academia_user') !== null;
 }
 
-function markRegistered() {
-  sessionStorage.setItem('academia_registered', 'true');
+function getUser() {
+  try { return JSON.parse(localStorage.getItem('academia_user')); }
+  catch { return null; }
+}
+
+function markRegistered(firstName, email) {
+  localStorage.setItem('academia_user', JSON.stringify({
+    firstName: firstName || '',
+    email: email || '',
+    registeredAt: new Date().toISOString()
+  }));
 }
 
 /**
@@ -55,6 +64,26 @@ function loadVideoEmbed(container, curso) {
   }
 }
 
+/* ── Topbar ── */
+function renderTopbar() {
+  const user = getUser();
+  if (user) {
+    return `<div id="topbar" style="background:rgba(10,10,12,0.95);border-bottom:1px solid rgba(212,165,116,0.15);padding:0.35rem 1rem;text-align:right;font-family:var(--font-mono,'SF Mono',monospace);font-size:0.7rem;color:#D4A574;letter-spacing:0.04em;">Hola, ${user.firstName} · ⛵+💎=🦁</div>`;
+  }
+  return `<div id="topbar" style="background:rgba(10,10,12,0.95);border-bottom:1px solid rgba(212,165,116,0.15);padding:0.35rem 1rem;text-align:right;font-family:var(--font-mono,'SF Mono',monospace);font-size:0.7rem;color:rgba(255,255,255,0.45);letter-spacing:0.04em;"><a href="#" onclick="event.preventDefault();abrirModal('');" style="color:#D4A574;text-decoration:none;">Regístrate gratis para acceder al contenido</a></div>`;
+}
+
+function updateTopbar() {
+  const el = document.getElementById('topbar');
+  if (el) {
+    const user = getUser();
+    if (user) {
+      el.style.color = '#D4A574';
+      el.innerHTML = `Hola, ${user.firstName} · ⛵+💎=🦁`;
+    }
+  }
+}
+
 /* ── Header ── */
 function renderHeader(paginaActiva) {
   const nav = [
@@ -70,6 +99,7 @@ function renderHeader(paginaActiva) {
   }).join('');
 
   return `
+    ${renderTopbar()}
     <header class="header">
       <div class="container">
         <div class="header-brand">
@@ -334,8 +364,9 @@ async function enviarInscripcion(e) {
 
     if (!res.ok) throw new Error('Error en el registro');
 
-    // Mark as registered
-    markRegistered();
+    // Mark as registered with user data
+    markRegistered(firstName, email);
+    updateTopbar();
 
     // Show success state
     const modal = document.querySelector('.modal');
