@@ -59,13 +59,18 @@
       setMetaTags(curso.titulo, curso.descripcion);
       addCourseSchema(curso);
 
-      // Video principal — usa playlist embed si hay playlistId
+      // Video principal — gated: requiere registro
       const videoContainer = document.getElementById('videoMainContainer');
-      const embedUrl = getYouTubeEmbedUrl(curso);
-      if (embedUrl) {
-        videoContainer.innerHTML = `<iframe src="${embedUrl}" title="${curso.titulo}" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
+      if (isRegistered()) {
+        const embedUrl = getYouTubeEmbedUrl(curso);
+        if (embedUrl) {
+          videoContainer.innerHTML = `<iframe src="${embedUrl}" title="${curso.titulo}" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
+        } else {
+          videoContainer.innerHTML = `<div class="curso-video-placeholder">${cat.emoji}</div>`;
+        }
       } else {
-        videoContainer.innerHTML = `<div class="curso-video-placeholder">${cat.emoji}</div>`;
+        const thumbUrl = getVideoThumbnail(curso);
+        videoContainer.innerHTML = renderVideoGate(thumbUrl, curso.id, cat.emoji);
       }
 
       // Main content
