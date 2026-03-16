@@ -99,8 +99,14 @@ function renderCategoriaCard(cat) {
 /* ── Desafío Card ── */
 function renderDesafioCard(desafio) {
   const cat = CATEGORIAS[desafio.categoria];
-  const videoContent = desafio.youtubeId && desafio.youtubeId !== 'REEMPLAZAR'
-    ? `<iframe src="https://www.youtube.com/embed/${desafio.youtubeId}" title="${desafio.titulo}" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>`
+  let desafioEmbedUrl = null;
+  if (desafio.playlistId) {
+    desafioEmbedUrl = `https://www.youtube.com/embed/videoseries?list=${desafio.playlistId}`;
+  } else if (desafio.youtubeId) {
+    desafioEmbedUrl = `https://www.youtube.com/embed/${desafio.youtubeId}`;
+  }
+  const videoContent = desafioEmbedUrl
+    ? `<iframe src="${desafioEmbedUrl}" title="${desafio.titulo}" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>`
     : `<div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:3rem;opacity:0.2">${cat.emoji}</div>`;
 
   const semanasHTML = desafio.semanas.map((semana, i) => `
@@ -159,12 +165,15 @@ function renderModulos(curso) {
         <span class="modulo-toggle">▼</span>
       </div>
       <div class="modulo-lecciones">
-        ${modulo.lecciones.map(leccion => `
-          <div class="leccion" onclick="reproducirLeccion('${leccion.youtubeId}', this)">
+        ${modulo.lecciones.map(leccion => {
+          const hasVideo = leccion.youtubeId;
+          const onclick = hasVideo ? `onclick="reproducirLeccion('${leccion.youtubeId}', this)"` : '';
+          return `
+          <div class="leccion" ${onclick}>
             <span class="leccion-titulo">${leccion.titulo}</span>
             <span class="leccion-duracion">${leccion.duracion}</span>
-          </div>
-        `).join('')}
+          </div>`;
+        }).join('')}
       </div>
     </div>
   `).join('');
@@ -189,11 +198,10 @@ function reproducirLeccion(youtubeId, el) {
   document.querySelectorAll('.leccion.active').forEach(l => l.classList.remove('active'));
   el.classList.add('active');
 
-  if (youtubeId && youtubeId !== 'REEMPLAZAR') {
+  if (youtubeId) {
     videoContainer.innerHTML = `<iframe src="https://www.youtube.com/embed/${youtubeId}?autoplay=1" title="Lección" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
-  } else {
-    videoContainer.innerHTML = '<div class="curso-video-placeholder">⛵ + 💎 = 🦁</div>';
   }
+  // Si no tiene youtubeId individual, no cambia el player (mantiene el playlist embed)
 }
 
 /* ── Modal de inscripción ── */

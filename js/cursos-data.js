@@ -1,6 +1,12 @@
 /**
  * Academia 5.000 Millas — Base de datos de cursos
  * Método BDL: ⛵ + 💎 = 🦁
+ *
+ * Contenido real del canal de YouTube de Carlos Medina / 5.000 Millas
+ * Playlists:
+ *   - Desafío 28 días: PLWxXlZghiePzTuw9oJseZVg8bgp4-o7Ll
+ *   - Desafío 7 días:  PLWxXlZghiePx6gJI_hN6Upoz83u-Dy4n5
+ *   - Workshop 5.000 Millas: WtVrY9SKB84
  */
 
 const CATEGORIAS = {
@@ -32,184 +38,152 @@ const CATEGORIAS = {
 
 const CURSOS = [
   {
-    id: 'autoconocimiento',
-    titulo: 'El Viaje del Autoconocimiento',
-    subtitulo: 'Descubre quién eres antes de decidir a dónde vas',
-    categoria: 'barco',
-    nivel: 'Fundamento',
-    duracion: '2 horas',
-    totalLecciones: 6,
-    gratuito: true,
-    destacado: true,
-    youtubeId: 'REEMPLAZAR',
-    descripcion: 'Este curso es el primer paso en tu viaje de 5.000 millas. Antes de zarpar, necesitas conocer tu embarcación: tus fortalezas, tus sombras, tus patrones y tu verdadero norte. A través de ejercicios prácticos y reflexiones profundas, construirás el mapa de tu identidad.',
-    beneficios: [
-      'Identifica tus patrones limitantes',
-      'Descubre tus fortalezas ocultas',
-      'Construye tu mapa de identidad personal',
-      'Define tu verdadero norte'
-    ],
-    modulos: [
-      {
-        titulo: 'Módulo 1: El Puerto de Partida',
-        descripcion: '¿Dónde estás realmente? Diagnóstico honesto de tu punto de partida.',
-        lecciones: [
-          { titulo: 'Lección 1: El espejo sin filtros', duracion: '18 min', youtubeId: 'REEMPLAZAR' },
-          { titulo: 'Lección 2: Tus 5 máscaras sociales', duracion: '22 min', youtubeId: 'REEMPLAZAR' }
-        ]
-      },
-      {
-        titulo: 'Módulo 2: El Mapa Interior',
-        descripcion: 'Cartografía de tu mundo interno: creencias, valores, heridas.',
-        lecciones: [
-          { titulo: 'Lección 3: Creencias heredadas vs elegidas', duracion: '20 min', youtubeId: 'REEMPLAZAR' },
-          { titulo: 'Lección 4: El inventario de valores', duracion: '18 min', youtubeId: 'REEMPLAZAR' }
-        ]
-      },
-      {
-        titulo: 'Módulo 3: La Brújula',
-        descripcion: 'Define tu verdadero norte y traza la ruta.',
-        lecciones: [
-          { titulo: 'Lección 5: Tu propósito en una frase', duracion: '22 min', youtubeId: 'REEMPLAZAR' },
-          { titulo: 'Lección 6: El compromiso de las 5.000 millas', duracion: '20 min', youtubeId: 'REEMPLAZAR' }
-        ]
-      }
-    ]
-  },
-  {
-    id: 'salud-heptadimensional',
-    titulo: 'Salud Heptadimensional',
-    subtitulo: 'Transforma las 7 dimensiones de tu bienestar',
+    id: 'desafio-28-dias-curso',
+    titulo: 'Un Encuentro Conmigo Mismo: Desafío de 28 Días',
+    subtitulo: 'Lecciones grabadas a las 3am en 2021',
     categoria: 'diamante',
-    nivel: 'Intermedio',
-    duracion: '3 horas',
-    totalLecciones: 7,
+    nivel: 'Gratuito',
+    duracion: '28 días',
+    totalLecciones: 28,
     gratuito: true,
     destacado: true,
-    youtubeId: 'REEMPLAZAR',
-    descripcion: 'La salud no es solo ausencia de enfermedad. El Método BDL reconoce 7 dimensiones del bienestar integral: física, mental, emocional, relacional, financiera, de propósito y espiritual. Este curso te guía a través de cada dimensión con herramientas prácticas de transformación.',
+    youtubeId: '18S7wyLvZYw',
+    playlistId: 'PLWxXlZghiePzTuw9oJseZVg8bgp4-o7Ll',
+    descripcion: 'Lecciones grabadas a las 3am en 2021, cuando mi viaje apenas comenzaba. 28 días de inmersión total en el Método BDL.',
     beneficios: [
-      'Evalúa tus 7 dimensiones de salud',
-      'Crea un plan de transformación integral',
-      'Herramientas prácticas para cada dimensión',
-      'El diamante se forma bajo presión'
+      '28 días de transformación guiada',
+      'Método BDL completo: Barco → Diamante → León',
+      'Lecciones grabadas a las 3am — máxima autenticidad',
+      'Salud heptadimensional: 7 dimensiones del bienestar'
     ],
     modulos: [
       {
-        titulo: 'Módulo 1: El Diagnóstico Heptadimensional',
-        descripcion: 'Evalúa cada dimensión de tu bienestar con honestidad radical.',
+        titulo: 'Semana 1 — El Barco ⛵',
+        descripcion: 'Autoconocimiento: zarpa hacia tu interior y descubre tu punto de partida real.',
         lecciones: [
-          { titulo: 'Lección 1: Las 7 dimensiones del ser', duracion: '25 min', youtubeId: 'REEMPLAZAR' },
-          { titulo: 'Lección 2: Tu rueda de la vida real', duracion: '20 min', youtubeId: 'REEMPLAZAR' }
+          { titulo: 'Día 1: Bienvenida al desafío', duracion: 'Video' },
+          { titulo: 'Día 2: El punto de partida', duracion: 'Video' },
+          { titulo: 'Día 3: Tus máscaras', duracion: 'Video' },
+          { titulo: 'Día 4: La herida fundacional', duracion: 'Video' },
+          { titulo: 'Día 5: Inventario de creencias', duracion: 'Video' },
+          { titulo: 'Día 6: Tu línea de tiempo', duracion: 'Video' },
+          { titulo: 'Día 7: El verdadero norte', duracion: 'Video' }
         ]
       },
       {
-        titulo: 'Módulo 2: Cuerpo, Mente y Emociones',
-        descripcion: 'Las tres dimensiones internas que sostienen todo lo demás.',
+        titulo: 'Semana 2 — El Diamante Interior 💎',
+        descripcion: 'Transformación interna: el carbón bajo presión se convierte en diamante.',
         lecciones: [
-          { titulo: 'Lección 3: Salud física: el templo', duracion: '28 min', youtubeId: 'REEMPLAZAR' },
-          { titulo: 'Lección 4: Salud mental y emocional', duracion: '25 min', youtubeId: 'REEMPLAZAR' }
+          { titulo: 'Día 8: La presión necesaria', duracion: 'Video' },
+          { titulo: 'Día 9: Salud mental', duracion: 'Video' },
+          { titulo: 'Día 10: Salud emocional', duracion: 'Video' },
+          { titulo: 'Día 11: Salud física', duracion: 'Video' },
+          { titulo: 'Día 12: Salud espiritual', duracion: 'Video' },
+          { titulo: 'Día 13: Salud relacional', duracion: 'Video' },
+          { titulo: 'Día 14: Integración interior', duracion: 'Video' }
         ]
       },
       {
-        titulo: 'Módulo 3: Relaciones, Finanzas, Propósito y Espíritu',
-        descripcion: 'Las dimensiones externas y trascendentes.',
+        titulo: 'Semana 3 — El Diamante Exterior 💎',
+        descripcion: 'Transformación externa: tu diamante interior empieza a brillar hacia afuera.',
         lecciones: [
-          { titulo: 'Lección 5: Relaciones y finanzas saludables', duracion: '30 min', youtubeId: 'REEMPLAZAR' },
-          { titulo: 'Lección 6: Propósito y espiritualidad', duracion: '25 min', youtubeId: 'REEMPLAZAR' },
-          { titulo: 'Lección 7: Integración: tu plan heptadimensional', duracion: '27 min', youtubeId: 'REEMPLAZAR' }
+          { titulo: 'Día 15: Salud financiera', duracion: 'Video' },
+          { titulo: 'Día 16: Tu propósito', duracion: 'Video' },
+          { titulo: 'Día 17: Comunica tu valor', duracion: 'Video' },
+          { titulo: 'Día 18: Límites sanos', duracion: 'Video' },
+          { titulo: 'Día 19: Tu marca personal', duracion: 'Video' },
+          { titulo: 'Día 20: Sistemas que te sostienen', duracion: 'Video' },
+          { titulo: 'Día 21: El diamante brilla', duracion: 'Video' }
+        ]
+      },
+      {
+        titulo: 'Semana 4 — El León 🦁',
+        descripcion: 'Soberanía y liderazgo: tu verdadera identidad restaurada.',
+        lecciones: [
+          { titulo: 'Día 22: La corona es tuya', duracion: 'Video' },
+          { titulo: 'Día 23: Decisiones de león', duracion: 'Video' },
+          { titulo: 'Día 24: El rugido — tu voz', duracion: 'Video' },
+          { titulo: 'Día 25: Lidera sirviendo', duracion: 'Video' },
+          { titulo: 'Día 26: Tu manada', duracion: 'Video' },
+          { titulo: 'Día 27: El legado', duracion: 'Video' },
+          { titulo: 'Día 28: El Génesis — 5.000 Millas', duracion: 'Video' }
         ]
       }
     ]
   },
   {
-    id: 'soberania-interior',
-    titulo: 'Soberanía Interior',
-    subtitulo: 'Gobierna tu mundo interior para liderar el exterior',
-    categoria: 'leon',
-    nivel: 'Avanzado',
-    duracion: '2.5 horas',
-    totalLecciones: 6,
-    gratuito: true,
-    destacado: true,
-    youtubeId: 'REEMPLAZAR',
-    descripcion: 'Un león no pide permiso para rugir. Este curso te lleva al corazón del liderazgo BDL: la soberanía interior. Aprenderás a gobernar tus emociones, establecer límites sanos, tomar decisiones desde la identidad y no desde el miedo, y liderar con amor, poder y dominio propio.',
-    beneficios: [
-      'Desarrolla dominio propio real',
-      'Establece límites desde el amor',
-      'Toma decisiones desde la identidad',
-      'Lidera sin necesidad de aprobación'
-    ],
-    modulos: [
-      {
-        titulo: 'Módulo 1: El Trono Interior',
-        descripcion: '¿Quién gobierna tu vida? Recupera tu autoridad interna.',
-        lecciones: [
-          { titulo: 'Lección 1: El rey destronado', duracion: '22 min', youtubeId: 'REEMPLAZAR' },
-          { titulo: 'Lección 2: Dominio propio vs control', duracion: '25 min', youtubeId: 'REEMPLAZAR' }
-        ]
-      },
-      {
-        titulo: 'Módulo 2: El Rugido Auténtico',
-        descripcion: 'Encuentra tu voz y úsala con poder y compasión.',
-        lecciones: [
-          { titulo: 'Lección 3: Límites que liberan', duracion: '20 min', youtubeId: 'REEMPLAZAR' },
-          { titulo: 'Lección 4: Comunicación soberana', duracion: '25 min', youtubeId: 'REEMPLAZAR' }
-        ]
-      },
-      {
-        titulo: 'Módulo 3: El Liderazgo del León',
-        descripcion: 'Lidera desde la identidad restaurada.',
-        lecciones: [
-          { titulo: 'Lección 5: Decisiones desde la identidad', duracion: '23 min', youtubeId: 'REEMPLAZAR' },
-          { titulo: 'Lección 6: El león que sirve', duracion: '25 min', youtubeId: 'REEMPLAZAR' }
-        ]
-      }
-    ]
-  },
-  {
-    id: 'ia-emprendedores',
-    titulo: 'IA para Emprendedores',
-    subtitulo: 'Multiplica tu impacto con inteligencia artificial',
-    categoria: 'leon',
-    nivel: 'Práctico',
-    duracion: '3 horas',
+    id: 'despierta-7-dias',
+    titulo: 'Despierta o Morirás Dos Veces: Desafío de 7 Días',
+    subtitulo: 'Basado en el libro de Carlos Medina',
+    categoria: 'barco',
+    nivel: 'Gratuito',
+    duracion: '7 días',
     totalLecciones: 8,
     gratuito: true,
     destacado: true,
-    youtubeId: 'REEMPLAZAR',
-    descripcion: 'La IA no reemplaza al león, lo potencia. Este curso práctico te enseña a usar herramientas de inteligencia artificial para acelerar tu emprendimiento, automatizar tareas repetitivas, crear contenido de impacto y escalar tu visión. No necesitas saber programar.',
+    youtubeId: null,
+    playlistId: 'PLWxXlZghiePx6gJI_hN6Upoz83u-Dy4n5',
+    descripcion: 'Basado en el libro de Carlos Medina. 7 días para despertar tu grandeza fortaleciendo las 7 dimensiones: física, mental, emocional, espiritual, relacional, vocacional y financiera.',
     beneficios: [
-      'Domina herramientas de IA sin programar',
-      'Automatiza tu negocio inteligentemente',
-      'Crea contenido de impacto con IA',
-      'Escala tu visión con tecnología'
+      'Despierta tu grandeza en 7 días',
+      'Basado en el libro de Carlos Medina',
+      'Fortalece 7 dimensiones de vida',
+      'Ejercicios prácticos diarios'
     ],
     modulos: [
       {
-        titulo: 'Módulo 1: IA para Humanos',
-        descripcion: 'Entiende la IA sin tecnicismos y descubre su potencial real.',
+        titulo: 'Módulo 1: El Despertar',
+        descripcion: 'Introducción al desafío y los primeros pasos del despertar.',
         lecciones: [
-          { titulo: 'Lección 1: IA desmitificada', duracion: '18 min', youtubeId: 'REEMPLAZAR' },
-          { titulo: 'Lección 2: Tu ecosistema de herramientas IA', duracion: '22 min', youtubeId: 'REEMPLAZAR' },
-          { titulo: 'Lección 3: Prompting: hablar con la IA', duracion: '25 min', youtubeId: 'REEMPLAZAR' }
+          { titulo: 'Introducción: Despierta o morirás dos veces', duracion: 'Video' },
+          { titulo: 'Día 1: La primera muerte — no vivir', duracion: 'Video' },
+          { titulo: 'Día 2: Tu historia no es tu destino', duracion: 'Video' }
         ]
       },
       {
-        titulo: 'Módulo 2: IA en tu Negocio',
-        descripcion: 'Aplicaciones prácticas de IA para emprendedores.',
+        titulo: 'Módulo 2: Las Dimensiones',
+        descripcion: 'Fortalece las dimensiones de tu bienestar integral.',
         lecciones: [
-          { titulo: 'Lección 4: Contenido con IA', duracion: '22 min', youtubeId: 'REEMPLAZAR' },
-          { titulo: 'Lección 5: Marketing automatizado', duracion: '20 min', youtubeId: 'REEMPLAZAR' },
-          { titulo: 'Lección 6: Análisis y decisiones con datos', duracion: '23 min', youtubeId: 'REEMPLAZAR' }
+          { titulo: 'Día 3: Dimensión física y mental', duracion: 'Video' },
+          { titulo: 'Día 4: Dimensión emocional y espiritual', duracion: 'Video' },
+          { titulo: 'Día 5: Dimensión relacional', duracion: 'Video' }
         ]
       },
       {
-        titulo: 'Módulo 3: Escala con IA',
-        descripcion: 'Sistemas y automatizaciones para crecer sin límites.',
+        titulo: 'Módulo 3: La Grandeza',
+        descripcion: 'Despierta tu grandeza y establece tu nueva identidad.',
         lecciones: [
-          { titulo: 'Lección 7: Automatiza flujos de trabajo', duracion: '25 min', youtubeId: 'REEMPLAZAR' },
-          { titulo: 'Lección 8: Tu plan de implementación IA', duracion: '25 min', youtubeId: 'REEMPLAZAR' }
+          { titulo: 'Día 6: Dimensión vocacional y financiera', duracion: 'Video' },
+          { titulo: 'Día 7: El despertar — tu nueva identidad', duracion: 'Video' }
+        ]
+      }
+    ]
+  },
+  {
+    id: 'workshop-5000-millas',
+    titulo: 'Workshop 5.000 Millas',
+    subtitulo: 'Masterclass completa del movimiento 5.000 Millas',
+    categoria: 'leon',
+    nivel: 'Gratuito',
+    duracion: '1 sesión',
+    totalLecciones: 1,
+    gratuito: true,
+    destacado: true,
+    youtubeId: 'WtVrY9SKB84',
+    playlistId: null,
+    descripcion: 'Masterclass completa del movimiento 5.000 Millas. Visión, método BDL y plan de acción.',
+    beneficios: [
+      'Método BDL completo en una sesión',
+      'Masterclass intensiva con Carlos Medina',
+      'Visión, método y plan de acción',
+      'Herramientas prácticas inmediatas'
+    ],
+    modulos: [
+      {
+        titulo: 'Workshop Completo',
+        descripcion: 'Masterclass del Método 5.000 Millas — Barco, Diamante y León.',
+        lecciones: [
+          { titulo: 'Workshop 5.000 Millas — Método BDL Completo', duracion: 'Sesión completa', youtubeId: 'WtVrY9SKB84' }
         ]
       }
     ]
@@ -219,24 +193,26 @@ const CURSOS = [
 const DESAFIOS = [
   {
     id: 'desafio-28-dias',
-    titulo: 'Desafío 28 Días: Transforma tu Identidad',
-    subtitulo: 'El Método BDL en 4 semanas de inmersión total',
+    titulo: 'Desafío 28 Días: Un Encuentro Conmigo Mismo',
+    subtitulo: 'Lecciones grabadas a las 3am en 2021 — El Método BDL en 4 semanas',
     categoria: 'diamante',
     gratuito: true,
     activo: true,
     youtubeId: '18S7wyLvZYw',
-    descripcion: '28 días que cambiarán tu forma de verte. Cada semana sigue una fase del Método BDL: del autoconocimiento a la soberanía.',
+    playlistId: 'PLWxXlZghiePzTuw9oJseZVg8bgp4-o7Ll',
+    cursoId: 'desafio-28-dias-curso',
+    descripcion: '28 días que cambiarán tu forma de verte. Cada semana sigue una fase del Método BDL: del autoconocimiento a la soberanía. Lecciones grabadas a las 3 de la mañana por Carlos Medina durante 2021.',
     semanas: [
       {
         titulo: 'Semana 1 — El Barco ⛵',
         subtitulo: 'Autoconocimiento',
         dias: [
-          { dia: 1, titulo: 'El punto de partida', descripcion: 'Escribe dónde estás hoy con honestidad radical.' },
-          { dia: 2, titulo: 'Tus 3 máscaras', descripcion: 'Identifica las máscaras que usas en público.' },
-          { dia: 3, titulo: 'La herida fundacional', descripcion: 'Reconoce la herida que moldea tus decisiones.' },
-          { dia: 4, titulo: 'Inventario de creencias', descripcion: 'Lista las creencias que te frenan y las que te impulsan.' },
-          { dia: 5, titulo: 'Tu línea de tiempo', descripcion: 'Mapea los momentos que te definieron.' },
-          { dia: 6, titulo: 'Carta al yo pasado', descripcion: 'Escribe lo que necesitabas escuchar.' },
+          { dia: 1, titulo: 'Bienvenida al desafío', descripcion: 'Conoce el mapa del viaje y prepárate para zarpar.' },
+          { dia: 2, titulo: 'El punto de partida', descripcion: 'Escribe dónde estás hoy con honestidad radical.' },
+          { dia: 3, titulo: 'Tus máscaras', descripcion: 'Identifica las máscaras que usas en público.' },
+          { dia: 4, titulo: 'La herida fundacional', descripcion: 'Reconoce la herida que moldea tus decisiones.' },
+          { dia: 5, titulo: 'Inventario de creencias', descripcion: 'Lista las creencias que te frenan y las que te impulsan.' },
+          { dia: 6, titulo: 'Tu línea de tiempo', descripcion: 'Mapea los momentos que te definieron.' },
           { dia: 7, titulo: 'El verdadero norte', descripcion: 'Define tu dirección antes de avanzar.' }
         ]
       },
@@ -257,7 +233,7 @@ const DESAFIOS = [
         titulo: 'Semana 3 — El Diamante Exterior 💎',
         subtitulo: 'Transformación externa',
         dias: [
-          { dia: 15, titulo: 'Salud financiera: tu relación con el dinero', descripcion: 'Diagnostica tus creencias sobre la abundancia.' },
+          { dia: 15, titulo: 'Salud financiera', descripcion: 'Diagnostica tus creencias sobre la abundancia.' },
           { dia: 16, titulo: 'Tu propósito en una frase', descripcion: 'Destila tu razón de ser en palabras claras.' },
           { dia: 17, titulo: 'Comunica tu valor', descripcion: 'Aprende a mostrar quién eres sin arrogancia.' },
           { dia: 18, titulo: 'Límites sanos', descripcion: 'Di no sin culpa y sí con convicción.' },
@@ -276,21 +252,38 @@ const DESAFIOS = [
           { dia: 25, titulo: 'Lidera sirviendo', descripcion: 'El verdadero liderazgo es servicio.' },
           { dia: 26, titulo: 'Tu manada: forma comunidad', descripcion: 'Rodéate de personas que te desafíen.' },
           { dia: 27, titulo: 'El legado', descripcion: 'Define qué quieres dejar en el mundo.' },
-          { dia: 28, titulo: 'El león ha despertado', descripcion: 'Declara tu nueva identidad. ⛵ + 💎 = 🦁' }
+          { dia: 28, titulo: 'El Génesis — 5.000 Millas', descripcion: 'Declara tu nueva identidad. ⛵ + 💎 = 🦁' }
         ]
       }
     ]
   },
   {
     id: 'desafio-7-dias',
-    titulo: 'Desafío 7 Días: Descubre tu Identidad',
-    subtitulo: 'Una semana para empezar tu viaje interior',
+    titulo: 'Desafío 7 Días: Despierta o Morirás Dos Veces',
+    subtitulo: 'Basado en el libro de Carlos Medina — Despierta tu grandeza en 7 días',
     categoria: 'barco',
     gratuito: true,
-    activo: false,
+    activo: true,
     youtubeId: null,
-    descripcion: 'Un desafío introductorio de 7 días para comenzar tu viaje de autoconocimiento con el Método BDL.',
-    semanas: []
+    playlistId: 'PLWxXlZghiePx6gJI_hN6Upoz83u-Dy4n5',
+    cursoId: 'despierta-7-dias',
+    descripcion: 'Basado en el libro "Despierta o morirás dos veces" de Carlos Medina. 7 días para despertar tu grandeza fortaleciendo las 7 dimensiones de tu vida.',
+    semanas: [
+      {
+        titulo: 'Semana 1 — El Despertar ⛵',
+        subtitulo: 'Despierta tu grandeza en 7 días',
+        dias: [
+          { dia: 0, titulo: 'Introducción', descripcion: 'Bienvenida al desafío. ¿Estás dormido o despierto?' },
+          { dia: 1, titulo: 'La primera muerte — no vivir', descripcion: 'Reconoce las áreas donde estás dormido.' },
+          { dia: 2, titulo: 'Tu historia no es tu destino', descripcion: 'Separa tu pasado de tu potencial.' },
+          { dia: 3, titulo: 'Dimensión física y mental', descripcion: 'Despierta tu cuerpo y tu mente.' },
+          { dia: 4, titulo: 'Dimensión emocional y espiritual', descripcion: 'Reconecta con tu sentir y tu propósito.' },
+          { dia: 5, titulo: 'Dimensión relacional', descripcion: 'Evalúa y fortalece tus relaciones clave.' },
+          { dia: 6, titulo: 'Dimensión vocacional y financiera', descripcion: 'Alinea tu trabajo y tu dinero con tu identidad.' },
+          { dia: 7, titulo: 'El despertar', descripcion: 'Declara tu nueva identidad despierta.' }
+        ]
+      }
+    ]
   }
 ];
 
@@ -333,8 +326,23 @@ function getDesafiosActivos() {
 }
 
 function getYouTubeThumbnail(youtubeId) {
-  if (!youtubeId || youtubeId === 'REEMPLAZAR') return null;
+  if (!youtubeId) return null;
   return `https://img.youtube.com/vi/${youtubeId}/hqdefault.jpg`;
+}
+
+/**
+ * Genera la URL de embed de YouTube.
+ * Si el curso tiene playlistId, usa el embed de playlist completa.
+ * Si solo tiene youtubeId, usa el embed de video individual.
+ */
+function getYouTubeEmbedUrl(curso) {
+  if (curso.playlistId) {
+    return `https://www.youtube.com/embed/videoseries?list=${curso.playlistId}`;
+  }
+  if (curso.youtubeId) {
+    return `https://www.youtube.com/embed/${curso.youtubeId}`;
+  }
+  return null;
 }
 
 function getCategoria(id) {
