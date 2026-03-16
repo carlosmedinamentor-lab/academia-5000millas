@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Curso de Academia 5.000 Millas — Campus Educativo BDL">
+  <title>Curso — Academia 5.000 Millas</title>
+  <link rel="stylesheet" href="css/academia.css">
+</head>
+<body>
+
+  <div id="header"></div>
+
+  <main class="curso-page">
+    <div class="container">
+      <!-- Video principal -->
+      <div class="curso-video-main" id="videoMainContainer"></div>
+
+      <!-- Layout 2 columnas -->
+      <div class="curso-layout">
+        <!-- Columna principal -->
+        <div class="curso-main" id="cursoMain"></div>
+
+        <!-- Sidebar sticky -->
+        <aside class="curso-sidebar" id="cursoSidebar"></aside>
+      </div>
+
+      <!-- Cursos relacionados -->
+      <div class="relacionados" id="cursosRelacionados"></div>
+    </div>
+  </main>
+
+  <div id="footer"></div>
+  <div id="modalContainer"></div>
+
+  <script src="js/cursos-data.js"></script>
+  <script src="js/componentes.js"></script>
+  <script>
+    document.getElementById('header').innerHTML = renderHeader('cursos');
+    document.getElementById('footer').innerHTML = renderFooter();
+
+    const params = new URLSearchParams(window.location.search);
+    const cursoId = params.get('id');
+    const curso = getCurso(cursoId);
+
+    if (!curso) {
+      document.getElementById('cursoMain').innerHTML = `
+        <div style="text-align:center;padding:4rem 0;">
+          <h2 style="font-family:var(--font-display);margin-bottom:1rem;">Curso no encontrado</h2>
+          <p style="color:var(--blanco-muted);margin-bottom:2rem;">El curso que buscas no existe o ha sido movido.</p>
+          <a href="catalogo.html" class="btn btn-primary">Ver todos los cursos</a>
+        </div>
+      `;
+      document.getElementById('cursoSidebar').style.display = 'none';
+    } else {
+      const cat = CATEGORIAS[curso.categoria];
+
+      // SEO
+      setMetaTags(curso.titulo, curso.descripcion);
+      addCourseSchema(curso);
+
+      // Video principal
+      const videoContainer = document.getElementById('videoMainContainer');
+      if (curso.youtubeId && curso.youtubeId !== 'REEMPLAZAR') {
+        videoContainer.innerHTML = `<iframe src="https://www.youtube.com/embed/${curso.youtubeId}" title="${curso.titulo}" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
+      } else {
+        videoContainer.innerHTML = `<div class="curso-video-placeholder">${cat.emoji}</div>`;
+      }
+
+      // Main content
+      document.getElementById('cursoMain').innerHTML = `
+        <div class="curso-breadcrumb">
+          <a href="index.html">Inicio</a> / <a href="catalogo.html">Cursos</a> / <a href="catalogo.html?cat=${curso.categoria}">${cat.emoji} ${cat.nombre}</a> / ${curso.titulo}
+        </div>
+
+        <div style="display:flex;gap:0.5rem;margin-bottom:1rem;">
+          <span class="badge badge-${curso.categoria}">${cat.emoji} ${cat.nombre}</span>
+          ${curso.gratuito ? '<span class="badge badge-gratis">Gratuito</span>' : '<span class="badge badge-premium">Premium</span>'}
+        </div>
+
+        <h1 class="curso-titulo">${curso.titulo}</h1>
+        <p class="curso-subtitulo-page">${curso.subtitulo}</p>
+        <p class="curso-descripcion">${curso.descripcion}</p>
+
+        <div class="modulos">
+          <h2 class="modulos-titulo">Contenido del curso</h2>
+          ${renderModulos(curso)}
+        </div>
+      `;
+
+      // Sidebar
+      const ctaButton = curso.gratuito
+        ? `<a href="#" class="btn btn-primary sidebar-cta" onclick="event.preventDefault();document.querySelector('.modulo .leccion')?.click();">Comenzar curso</a>`
+        : `<button class="btn btn-primary sidebar-cta" onclick="document.getElementById('modalCurso').value='${curso.titulo}';abrirModal();">Inscribirme</button>`;
+
+      document.getElementById('cursoSidebar').innerHTML = `
+        <div class="sidebar-card">
+          <div class="sidebar-meta">
+            <div class="sidebar-meta-item">
+              <span class="sidebar-meta-label">Categoría</span>
+              <span class="sidebar-meta-value">${cat.emoji} ${cat.nombre}</span>
+            </div>
+            <div class="sidebar-meta-item">
+              <span class="sidebar-meta-label">Nivel</span>
+              <span class="sidebar-meta-value">${curso.nivel}</span>
+            </div>
+            <div class="sidebar-meta-item">
+              <span class="sidebar-meta-label">Duración</span>
+              <span class="sidebar-meta-value">${curso.duracion}</span>
+            </div>
+            <div class="sidebar-meta-item">
+              <span class="sidebar-meta-label">Lecciones</span>
+              <span class="sidebar-meta-value">${curso.totalLecciones}</span>
+            </div>
+            <div class="sidebar-meta-item">
+              <span class="sidebar-meta-label">Precio</span>
+              <span class="sidebar-meta-value">${curso.gratuito ? 'Gratuito' : 'Premium'}</span>
+            </div>
+          </div>
+          ${ctaButton}
+          <ul class="sidebar-beneficios">
+            ${curso.beneficios.map(b => `<li>${b}</li>`).join('')}
+          </ul>
+        </div>
+      `;
+
+      // Cursos relacionados
+      const relacionados = getCursosRelacionados(curso.id);
+      if (relacionados.length > 0) {
+        document.getElementById('cursosRelacionados').innerHTML = `
+          <h3 style="font-family:var(--font-display);font-size:1.25rem;margin-bottom:1.5rem;">Cursos relacionados</h3>
+          <div class="cursos-grid">${relacionados.map(renderCursoCard).join('')}</div>
+        `;
+      }
+
+      // Modal
+      document.getElementById('modalContainer').innerHTML = renderModal();
+    }
+
+    initComponents();
+  </script>
+</body>
+</html>

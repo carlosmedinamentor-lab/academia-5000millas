@@ -1,0 +1,20 @@
+{
+  "name": "academia-5000millas",
+  "version": "2.0.0",
+  "description": "Academia 5.000 Millas — Campus educativo BDL. Método ⛵ + 💎 = 🦁",
+  "private": true,
+  "scripts": {
+    "dev": "npx serve .",
+    "start": "npx serve ."
+  },
+  "keywords": [
+    "academia",
+    "5000millas",
+    "bdl",
+    "educacion",
+    "liderazgo",
+    "transformacion"
+  ],
+  "author": "5.000 Millas",
+  "license": "MIT"
+}

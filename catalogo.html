@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Catálogo de cursos de Academia 5.000 Millas. Autoconocimiento, transformación y liderazgo. ⛵ + 💎 = 🦁">
+  <title>Cursos — Academia 5.000 Millas</title>
+  <link rel="stylesheet" href="css/academia.css">
+</head>
+<body>
+
+  <div id="header"></div>
+
+  <main>
+    <section class="section" style="padding-top: calc(var(--header-h) + 3rem);">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-label">Catálogo</span>
+          <h2 class="section-title">Todos los <span class="text-oro">cursos</span></h2>
+          <p class="section-subtitle">Explora nuestra biblioteca de formación. Filtra por categoría del Método BDL.</p>
+        </div>
+
+        <div class="filtros" id="filtros">
+          <button class="filtro-btn active" data-filtro="todos">Todos</button>
+          <button class="filtro-btn" data-filtro="barco">⛵ Barco</button>
+          <button class="filtro-btn" data-filtro="diamante">💎 Diamante</button>
+          <button class="filtro-btn" data-filtro="leon">🦁 León</button>
+          <button class="filtro-btn" data-filtro="gratuitos">✦ Gratuitos</button>
+          <button class="filtro-btn" data-filtro="premium">Premium</button>
+        </div>
+
+        <div class="cursos-grid" id="catalogoGrid"></div>
+      </div>
+    </section>
+  </main>
+
+  <div id="footer"></div>
+
+  <script src="js/cursos-data.js"></script>
+  <script src="js/componentes.js"></script>
+  <script>
+    document.getElementById('header').innerHTML = renderHeader('cursos');
+    document.getElementById('footer').innerHTML = renderFooter();
+
+    const grid = document.getElementById('catalogoGrid');
+    const filtros = document.getElementById('filtros');
+    let filtroActivo = 'todos';
+
+    function renderCatalogo(filtro) {
+      let cursos;
+      switch (filtro) {
+        case 'barco':
+        case 'diamante':
+        case 'leon':
+          cursos = getCursosPorCategoria(filtro);
+          break;
+        case 'gratuitos':
+          cursos = getCursosGratuitos();
+          break;
+        case 'premium':
+          cursos = CURSOS.filter(c => !c.gratuito);
+          break;
+        default:
+          cursos = CURSOS;
+      }
+
+      grid.innerHTML = cursos.length > 0
+        ? cursos.map(renderCursoCard).join('')
+        : '<p style="text-align:center;color:var(--blanco-muted);grid-column:1/-1;padding:3rem;">No hay cursos en esta categoría todavía.</p>';
+
+      initComponents();
+    }
+
+    // Leer parámetro ?cat= de la URL
+    const params = new URLSearchParams(window.location.search);
+    const catParam = params.get('cat');
+    if (catParam && ['barco', 'diamante', 'leon', 'gratuitos', 'premium'].includes(catParam)) {
+      filtroActivo = catParam;
+    }
+
+    // Activar filtro correcto
+    filtros.querySelectorAll('.filtro-btn').forEach(btn => {
+      btn.classList.toggle('active', btn.dataset.filtro === filtroActivo);
+    });
+
+    renderCatalogo(filtroActivo);
+
+    // Event listeners para filtros
+    filtros.addEventListener('click', (e) => {
+      const btn = e.target.closest('.filtro-btn');
+      if (!btn) return;
+
+      filtros.querySelectorAll('.filtro-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      filtroActivo = btn.dataset.filtro;
+      renderCatalogo(filtroActivo);
+    });
+
+    initComponents();
+  </script>
+</body>
+</html>

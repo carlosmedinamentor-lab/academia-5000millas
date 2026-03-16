@@ -3,59 +3,125 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Academia 5.000 Millas — Campus educativo del Método BDL. Cursos de autoconocimiento, transformación y liderazgo. ⛵ + 💎 = 🦁">
   <title>Academia 5.000 Millas — Campus Educativo BDL</title>
-  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/academia.css">
 </head>
 <body>
-  <header class="header">
-    <nav class="nav">
-      <a href="index.html" class="logo">Academia 5.000 Millas</a>
-      <ul class="nav-links">
-        <li><a href="index.html" class="active">Inicio</a></li>
-        <li><a href="pages/cursos.html">Cursos</a></li>
-        <li><a href="pages/perfil.html">Mi Perfil</a></li>
-        <li><a href="pages/about.html">Acerca de</a></li>
-      </ul>
-    </nav>
-  </header>
+
+  <div id="header"></div>
 
   <main>
+    <!-- Hero -->
     <section class="hero">
-      <h1>Bienvenido a Academia 5.000 Millas</h1>
-      <p>Tu camino hacia la excelencia comienza aquí. Explora nuestros cursos y avanza milla a milla hacia tus metas.</p>
-      <a href="pages/cursos.html" class="btn btn-primary">Explorar Cursos</a>
-    </section>
-
-    <section class="features">
-      <h2>¿Por qué elegirnos?</h2>
-      <div class="features-grid">
-        <div class="feature-card">
-          <h3>Aprendizaje Práctico</h3>
-          <p>Cursos diseñados con enfoque práctico para que apliques lo aprendido desde el primer día.</p>
+      <div>
+        <div class="hero-badge">Centro de Formación · Método BDL</div>
+        <h1>Academia <span class="text-oro">5.000 Millas</span></h1>
+        <div class="hero-ecuacion">⛵ + 💎 = 🦁</div>
+        <p class="hero-subtitulo">El viaje de transformación más importante es el que haces hacia tu interior. Autoconocimiento, transformación y liderazgo.</p>
+        <div class="hero-buttons">
+          <a href="catalogo.html" class="btn btn-primary btn-lg">Explorar Cursos</a>
+          <a href="desafios.html" class="btn btn-outline btn-lg">Ver Desafíos</a>
         </div>
-        <div class="feature-card">
-          <h3>Seguimiento de Progreso</h3>
-          <p>Visualiza tu avance en cada curso y celebra cada milla recorrida.</p>
-        </div>
-        <div class="feature-card">
-          <h3>Comunidad BDL</h3>
-          <p>Forma parte de una comunidad comprometida con el crecimiento y la excelencia.</p>
+        <div class="hero-stats">
+          <div class="hero-stat">
+            <span class="hero-stat-number font-mono" id="statCursos">4</span>
+            <span class="hero-stat-label">Cursos</span>
+          </div>
+          <div class="hero-stat">
+            <span class="hero-stat-number font-mono" id="statLecciones">27</span>
+            <span class="hero-stat-label">Lecciones</span>
+          </div>
+          <div class="hero-stat">
+            <span class="hero-stat-number font-mono">2</span>
+            <span class="hero-stat-label">Desafíos</span>
+          </div>
+          <div class="hero-stat">
+            <span class="hero-stat-number font-mono">∞</span>
+            <span class="hero-stat-label">Potencial</span>
+          </div>
         </div>
       </div>
     </section>
 
-    <section class="cursos-destacados">
-      <h2>Cursos Destacados</h2>
-      <div class="cursos-grid" id="cursos-destacados">
-        <!-- Los cursos se cargan dinámicamente -->
+    <!-- Categorías BDL -->
+    <section class="section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-label">Método BDL</span>
+          <h2 class="section-title">Tres fases, una <span class="text-oro">transformación</span></h2>
+          <p class="section-subtitle">Cada fase del método te acerca más a tu verdadera identidad.</p>
+        </div>
+        <div class="categorias-grid" id="categoriasGrid"></div>
+      </div>
+    </section>
+
+    <!-- Cursos Destacados -->
+    <section class="section" style="border-top: 1px solid var(--border);">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-label">Formación</span>
+          <h2 class="section-title">Cursos <span class="text-oro">destacados</span></h2>
+          <p class="section-subtitle">Comienza tu viaje con nuestros cursos gratuitos.</p>
+        </div>
+        <div class="cursos-grid" id="cursosDestacados"></div>
+      </div>
+    </section>
+
+    <!-- Desafíos -->
+    <section class="section" style="border-top: 1px solid var(--border);">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-label">Desafíos</span>
+          <h2 class="section-title">Transforma tu <span class="text-oro">identidad</span></h2>
+          <p class="section-subtitle">Desafíos intensivos diseñados para catalizar tu transformación.</p>
+        </div>
+        <div id="desafiosDestacados"></div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section">
+      <div class="container">
+        <span class="section-label">⛵ + 💎 = 🦁</span>
+        <h2>Empieza <span class="text-oro">gratis</span></h2>
+        <p>Todos nuestros cursos fundamentales son gratuitos. Tu transformación no tiene precio.</p>
+        <a href="catalogo.html" class="btn btn-primary btn-lg">Explorar Cursos</a>
       </div>
     </section>
   </main>
 
-  <footer class="footer">
-    <p>&copy; 2026 Academia 5.000 Millas — Campus Educativo BDL</p>
-  </footer>
+  <div id="footer"></div>
 
-  <script src="js/app.js"></script>
+  <script src="js/cursos-data.js"></script>
+  <script src="js/componentes.js"></script>
+  <script>
+    document.getElementById('header').innerHTML = renderHeader('inicio');
+    document.getElementById('footer').innerHTML = renderFooter();
+
+    // Stats
+    document.getElementById('statCursos').textContent = CURSOS.length;
+    document.getElementById('statLecciones').textContent = contarLecciones();
+
+    // Categorías
+    const categoriasGrid = document.getElementById('categoriasGrid');
+    Object.values(CATEGORIAS).forEach(cat => {
+      categoriasGrid.innerHTML += renderCategoriaCard(cat);
+    });
+
+    // Cursos destacados
+    const cursosGrid = document.getElementById('cursosDestacados');
+    getCursosDestacados().forEach(curso => {
+      cursosGrid.innerHTML += renderCursoCard(curso);
+    });
+
+    // Desafíos destacados (solo activos)
+    const desafiosContainer = document.getElementById('desafiosDestacados');
+    getDesafiosActivos().forEach(desafio => {
+      desafiosContainer.innerHTML += renderDesafioCard(desafio);
+    });
+
+    initComponents();
+  </script>
 </body>
 </html>

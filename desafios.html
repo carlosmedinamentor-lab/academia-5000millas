@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Desafíos de transformación de Academia 5.000 Millas. Transforma tu identidad con el Método BDL. ⛵ + 💎 = 🦁">
+  <title>Desafíos — Academia 5.000 Millas</title>
+  <link rel="stylesheet" href="css/academia.css">
+</head>
+<body>
+
+  <div id="header"></div>
+
+  <main>
+    <section class="section" style="padding-top: calc(var(--header-h) + 3rem);">
+      <div class="container">
+        <div class="section-header">
+          <div class="hero-ecuacion" style="margin-bottom:1rem;">⛵ + 💎 = 🦁</div>
+          <span class="section-label">Desafíos de Transformación</span>
+          <h2 class="section-title">Transforma tu <span class="text-oro">identidad</span></h2>
+          <p class="section-subtitle">Desafíos intensivos diseñados para catalizar tu proceso de transformación siguiendo el Método BDL.</p>
+        </div>
+
+        <div id="desafiosGrid" style="display:flex;flex-direction:column;gap:2rem;"></div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section">
+      <div class="container">
+        <span class="section-label">⛵ + 💎 = 🦁</span>
+        <h2>¿Listo para el <span class="text-oro">viaje</span>?</h2>
+        <p>Explora nuestros cursos y comienza tu transformación hoy.</p>
+        <a href="catalogo.html" class="btn btn-primary btn-lg">Explorar Cursos</a>
+      </div>
+    </section>
+  </main>
+
+  <div id="footer"></div>
+
+  <script src="js/cursos-data.js"></script>
+  <script src="js/componentes.js"></script>
+  <script>
+    document.getElementById('header').innerHTML = renderHeader('desafios');
+    document.getElementById('footer').innerHTML = renderFooter();
+
+    const grid = document.getElementById('desafiosGrid');
+    DESAFIOS.forEach(desafio => {
+      grid.innerHTML += renderDesafioCard(desafio);
+    });
+
+    initComponents();
+  </script>
+</body>
+</html>
