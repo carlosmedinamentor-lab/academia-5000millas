@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mi Perfil — Academia 5.000 Millas</title>
+  <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+  <header class="header">
+    <nav class="nav">
+      <a href="../index.html" class="logo">Academia 5.000 Millas</a>
+      <ul class="nav-links">
+        <li><a href="../index.html">Inicio</a></li>
+        <li><a href="cursos.html">Cursos</a></li>
+        <li><a href="perfil.html" class="active">Mi Perfil</a></li>
+        <li><a href="about.html">Acerca de</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="perfil-container">
+      <div class="perfil-header">
+        <h1>Mi Perfil</h1>
+        <p>Sigue tu progreso y celebra cada milla recorrida</p>
+      </div>
+
+      <div class="perfil-stats">
+        <div class="stat-card">
+          <div class="stat-number" id="millas-recorridas">0</div>
+          <div class="stat-label">Millas Recorridas</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number" id="cursos-activos">0</div>
+          <div class="stat-label">Cursos Activos</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">5.000</div>
+          <div class="stat-label">Meta Final</div>
+        </div>
+      </div>
+
+      <h2>Mis Cursos</h2>
+      <div class="cursos-grid" id="perfil-cursos">
+        <!-- Los cursos se cargan dinámicamente -->
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>&copy; 2026 Academia 5.000 Millas — Campus Educativo BDL</p>
+  </footer>
+
+  <script src="../js/app.js"></script>
+</body>
+</html>
