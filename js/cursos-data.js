@@ -124,7 +124,7 @@ const CURSOS = [
     moneda: 'EUR',
     stripeLink: 'https://buy.stripe.com/6oUaEY3BW2VH2yF4lngUM0T',
     destacado: true,
-    youtubeId: null,
+    youtubeId: 'WtVrY9SKB84',
     playlistId: 'PLWxXlZghiePx6gJI_hN6Upoz83u-Dy4n5',
     descripcion: 'Basado en el libro de Carlos Medina. 7 días para despertar tu grandeza fortaleciendo las 7 dimensiones: física, mental, emocional, espiritual, relacional, vocacional y financiera.',
     beneficios: [
@@ -190,7 +190,7 @@ const CURSOS = [
         ]
       }
     ]
-  }
+  },
   {
     id: 'inteligencia-emocional',
     titulo: 'Inteligencia Emocional: Los Secretos que Nadie te Enseñó',
@@ -301,9 +301,10 @@ const DESAFIOS = [
     gratuito: false,
     precio: 47,
     activo: true,
-    youtubeId: null,
+    youtubeId: 'WtVrY9SKB84',
     playlistId: 'PLWxXlZghiePx6gJI_hN6Upoz83u-Dy4n5',
     cursoId: 'despierta-7-dias',
+    stripeLink: 'https://buy.stripe.com/6oUaEY3BW2VH2yF4lngUM0T',
     descripcion: 'Basado en el libro "Despierta o morirás dos veces" de Carlos Medina. 7 días para despertar tu grandeza fortaleciendo las 7 dimensiones de tu vida.',
     semanas: [
       {

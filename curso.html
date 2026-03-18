@@ -16,6 +16,7 @@
   <meta name="twitter:image" content="https://img.youtube.com/vi/18S7wyLvZYw/maxresdefault.jpg">
   <title>Curso — Academia 5.000 Millas</title>
   <link rel="stylesheet" href="css/academia.css">
+  <link rel="stylesheet" href="css/academia-premium.css">
 </head>
 <body>
 
@@ -105,7 +106,9 @@
       `;
 
       // Sidebar
-      const ctaButton = `<button class="btn btn-primary sidebar-cta" onclick="abrirModal('${curso.id}')">Empezar ahora — Gratis</button>`;
+      const ctaButton = curso.gratuito
+        ? `<button class="btn btn-primary sidebar-cta" onclick="abrirModal('${curso.id}')">Empezar ahora — Gratis</button>`
+        : `<a href="${curso.stripeLink || 'academia/desafio-7-dias.html'}" class="btn-stripe sidebar-cta" style="width:100%;text-align:center;">Acceder — €${curso.precio || 47}</a>`;
 
       document.getElementById('cursoSidebar').innerHTML = `
         <div class="sidebar-card">
@@ -128,7 +131,7 @@
             </div>
             <div class="sidebar-meta-item">
               <span class="sidebar-meta-label">Precio</span>
-              <span class="sidebar-meta-value">${curso.gratuito ? 'Gratuito' : 'Premium'}</span>
+              <span class="sidebar-meta-value">${curso.gratuito ? 'Gratuito' : '€' + (curso.precio || 'Premium')}</span>
             </div>
           </div>
           ${ctaButton}
