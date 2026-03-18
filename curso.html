@@ -99,10 +99,47 @@
         <p class="curso-subtitulo-page">${curso.subtitulo}</p>
         <p class="curso-descripcion">${curso.descripcion}</p>
 
+        ${curso.thumbnail ? `
+        <div style="margin:2rem 0;text-align:center;">
+          <img src="${curso.thumbnail}" alt="${curso.titulo}" loading="lazy" style="max-width:600px;width:100%;border-radius:8px;box-shadow:0 12px 40px rgba(0,0,0,0.4);">
+        </div>` : ''}
+
+        ${!curso.gratuito ? `
+        <div style="margin:2rem 0;">
+          <h2 class="modulos-titulo">Qu&eacute; incluye</h2>
+          <div class="value-grid" style="grid-template-columns:repeat(auto-fit,minmax(200px,1fr));">
+            <div class="glass-card value-item">
+              <span class="value-icon">&#127909;</span>
+              <div class="value-title">${curso.totalLecciones} Videos</div>
+              <div class="value-desc">Contenido exclusivo de inmersi&oacute;n total.</div>
+            </div>
+            <div class="glass-card value-item">
+              <span class="value-icon">&#128214;</span>
+              <div class="value-title">Workbook Premium</div>
+              <div class="value-desc">Ejercicios pr&aacute;cticos para cada lecci&oacute;n.</div>
+            </div>
+            <div class="glass-card value-item">
+              <span class="value-icon">&#127942;</span>
+              <div class="value-title">Certificado</div>
+              <div class="value-desc">Certificado de completaci&oacute;n descargable.</div>
+            </div>
+          </div>
+          ${curso.id === 'despierta-7-dias' ? '<div style="text-align:center;margin-top:1.5rem;"><img src="images/planificacion-semanal.svg" alt="Planificaci&oacute;n semanal" loading="lazy" style="max-width:500px;width:100%;border-radius:8px;"></div>' : ''}
+        </div>` : ''}
+
         <div class="modulos">
           <h2 class="modulos-titulo">Contenido del curso</h2>
           ${renderModulos(curso)}
         </div>
+
+        ${!curso.gratuito ? `
+        <div class="guarantee" style="margin-top:2rem;">
+          <div style="text-align:center;margin-bottom:1rem;">
+            <img src="images/garantia-badges.svg" alt="Garant&iacute;a 100% + Reembolso 7 d&iacute;as" loading="lazy" style="max-width:400px;width:100%;">
+          </div>
+          <h3>Garant&iacute;a de Transformaci&oacute;n</h3>
+          <p>Si no transforma tu perspectiva, te devolvemos el 100% de tu inversi&oacute;n en los primeros 7 d&iacute;as. Sin preguntas.</p>
+        </div>` : ''}
       `;
 
       // Sidebar
