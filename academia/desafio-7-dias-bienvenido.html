@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Bienvenido al Desafío 7 Días — Despierta o Morirás Dos Veces. Tu acceso premium está listo.">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Bienvenido — Desafío 7 Días — Academia 5.000 Millas</title>
+  <link rel="stylesheet" href="../css/academia.css">
+  <link rel="stylesheet" href="../css/academia-premium.css">
+</head>
+<body>
+
+  <div id="header"></div>
+
+  <main>
+    <!-- Welcome Hero -->
+    <section class="course-hero" style="min-height:50vh;">
+      <div class="course-hero-bg" style="background-image:url('https://img.youtube.com/vi/WtVrY9SKB84/maxresdefault.jpg');"></div>
+      <div class="course-hero-content" style="text-align:center;">
+        <div style="font-size:3rem;margin-bottom:1rem;">&#127942;</div>
+        <h1 class="curso-titulo" style="text-align:center;">&iexcl;Tu viaje comienza ahora!</h1>
+        <p class="curso-subtitulo-page" style="max-width:500px;margin:0 auto;">Completa tus datos para desbloquear tu acceso al Desaf&iacute;o de 7 D&iacute;as.</p>
+      </div>
+    </section>
+
+    <!-- Registration + Content -->
+    <section class="section">
+      <div class="container">
+        <div id="gateSection"></div>
+      </div>
+    </section>
+
+    <!-- Course Content (hidden until registration) -->
+    <div id="courseContent" style="display:none;">
+      <section class="section">
+        <div class="course-content">
+          <!-- Progress Bar -->
+          <div class="progress-container">
+            <div class="progress-label">
+              <span>Tu progreso</span>
+              <span id="progressText">0 / 8 lecciones</span>
+            </div>
+            <div class="progress-bar">
+              <div class="progress-fill" id="progressFill" style="width:0%;"></div>
+            </div>
+          </div>
+
+          <!-- Lessons -->
+          <div class="course-week">
+            <h2 class="course-week-title">El Despertar &#9973;</h2>
+            <div id="allLessons"></div>
+          </div>
+
+          <!-- Completion -->
+          <div class="course-completion">
+            <div style="font-size:3rem;margin-bottom:1rem;">&#129409;</div>
+            <h2>&iexcl;Has despertado! <span class="text-oro">Tu nueva identidad est&aacute; en marcha.</span></h2>
+            <p>7 d&iacute;as de inmersi&oacute;n total. Ahora vive desde tu grandeza.</p>
+            <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
+              <a href="desafio-28-dias.html" class="btn btn-primary btn-lg">Contin&uacute;a: Desaf&iacute;o 28 D&iacute;as</a>
+              <a href="https://5000millas.com" target="_blank" rel="noopener" class="btn btn-outline btn-lg">Diagn&oacute;stico BDL</a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <div id="footer"></div>
+
+  <script src="../js/cursos-data.js"></script>
+  <script src="../js/componentes.js"></script>
+  <script>
+    document.getElementById('header').innerHTML = renderHeader('academia');
+    document.getElementById('footer').innerHTML = renderFooter();
+    document.querySelectorAll('#header a, #footer a').forEach(function(a) {
+      var href = a.getAttribute('href');
+      if (href && !href.startsWith('http') && !href.startsWith('#') && !href.startsWith('/') && !href.startsWith('../')) {
+        a.setAttribute('href', '../' + href);
+      }
+    });
+
+    var CURSO_ID = 'despierta-7-dias';
+    var PLAYLIST_ID = 'PLWxXlZghiePx6gJI_hN6Upoz83u-Dy4n5';
+    var TOTAL_LESSONS = 8;
+    var STORAGE_KEY = 'academia_progress_7dias';
+
+    var lessonTitles = [
+      'Introducci\u00f3n: Despierta o morir\u00e1s dos veces',
+      'D\u00eda 1: La primera muerte \u2014 no vivir',
+      'D\u00eda 2: Tu historia no es tu destino',
+      'D\u00eda 3: Dimensi\u00f3n f\u00edsica y mental',
+      'D\u00eda 4: Dimensi\u00f3n emocional y espiritual',
+      'D\u00eda 5: Dimensi\u00f3n relacional',
+      'D\u00eda 6: Dimensi\u00f3n vocacional y financiera',
+      'D\u00eda 7: El despertar \u2014 tu nueva identidad'
+    ];
+
+    function getProgress() {
+      try { return JSON.parse(localStorage.getItem(STORAGE_KEY)) || {}; } catch(e) { return {}; }
+    }
+
+    function saveProgress(progress) {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(progress));
+    }
+
+    function updateProgressBar() {
+      var progress = getProgress();
+      var completed = Object.keys(progress).filter(function(k) { return progress[k]; }).length;
+      var pct = Math.round((completed / TOTAL_LESSONS) * 100);
+      document.getElementById('progressFill').style.width = pct + '%';
+      document.getElementById('progressText').textContent = completed + ' / ' + TOTAL_LESSONS + ' lecciones';
+    }
+
+    function toggleLesson(num) {
+      var v = document.getElementById('lessonVideo_' + num);
+      if (v) v.classList.toggle('open');
+    }
+
+    function toggleComplete(num, el) {
+      var progress = getProgress();
+      progress[num] = !progress[num];
+      saveProgress(progress);
+      el.classList.toggle('completed', progress[num]);
+      updateProgressBar();
+      event.stopPropagation();
+    }
+
+    function renderLessons() {
+      var progress = getProgress();
+      var html = '';
+      lessonTitles.forEach(function(title, i) {
+        var isComplete = progress[i] || false;
+        var label = i === 0 ? 'INTRO' : 'D\u00eda ' + i;
+        html += '<div class="lesson-card">' +
+          '<div class="lesson-header" onclick="toggleLesson(' + i + ')">' +
+            '<span class="lesson-number">' + label + '</span>' +
+            '<span class="lesson-title">' + title.replace(/^(Introducci\u00f3n:|D\u00eda \d+:)\s*/, '') + '</span>' +
+            '<div class="lesson-check' + (isComplete ? ' completed' : '') + '" onclick="toggleComplete(' + i + ', this)"></div>' +
+          '</div>' +
+          '<div class="lesson-video" id="lessonVideo_' + i + '">' +
+            '<iframe src="https://www.youtube.com/embed/videoseries?list=' + PLAYLIST_ID + '&index=' + (i + 1) + '" title="' + title + '" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>' +
+          '</div>' +
+        '</div>';
+      });
+      document.getElementById('allLessons').innerHTML = html;
+      updateProgressBar();
+    }
+
+    function showGate() {
+      document.getElementById('gateSection').innerHTML =
+        '<div class="gate-card glass-card">' +
+          '<h3>Completa tu registro</h3>' +
+          '<p>Ingresa tus datos para desbloquear el contenido premium del Desaf\u00edo de 7 D\u00edas.</p>' +
+          '<form class="modal-form" onsubmit="submitGate(event)">' +
+            '<input type="text" class="modal-input" id="gateName" placeholder="Tu nombre completo" required>' +
+            '<input type="email" class="modal-input" id="gateEmail" placeholder="Tu email" required>' +
+            '<input type="tel" class="modal-input" id="gatePhone" placeholder="Tu WhatsApp (opcional)">' +
+            '<div class="modal-error" style="display:none;color:#e74c3c;font-size:0.875rem;"></div>' +
+            '<button type="submit" class="btn btn-primary btn-lg" style="width:100%;">Desbloquear mi acceso</button>' +
+          '</form>' +
+        '</div>';
+    }
+
+    function showContent() {
+      document.getElementById('gateSection').innerHTML =
+        '<div style="text-align:center;">' +
+          '<div style="font-size:2rem;margin-bottom:0.5rem;">&#9989;</div>' +
+          '<p style="color:var(--oro);font-family:var(--font-mono);font-size:0.8rem;letter-spacing:0.05em;">ACCESO PREMIUM DESBLOQUEADO</p>' +
+        '</div>';
+      document.getElementById('courseContent').style.display = 'block';
+      renderLessons();
+    }
+
+    async function submitGate(e) {
+      e.preventDefault();
+      var btn = e.target.querySelector('button[type="submit"]');
+      btn.textContent = 'Enviando...';
+      btn.disabled = true;
+
+      var firstName = document.getElementById('gateName').value.trim();
+      var email = document.getElementById('gateEmail').value.trim();
+      var phone = document.getElementById('gatePhone').value.trim();
+
+      try {
+        var res = await fetch(GHL_WEBHOOK_URL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            firstName: firstName,
+            email: email,
+            phone: phone,
+            curso: CURSO_ID,
+            source: 'Academia 5.000 Millas \u2014 Desaf\u00edo 7 D\u00edas (Premium)',
+            paid: true,
+            amount: 47
+          })
+        });
+        if (!res.ok) throw new Error('Error');
+        markRegistered(firstName, email);
+        updateTopbar();
+        showContent();
+      } catch(err) {
+        btn.textContent = 'Desbloquear mi acceso';
+        btn.disabled = false;
+        var errorEl = e.target.querySelector('.modal-error');
+        if (errorEl) { errorEl.textContent = 'Hubo un problema. Int\u00e9ntalo de nuevo.'; errorEl.style.display = 'block'; }
+      }
+    }
+
+    if (isRegistered()) {
+      showContent();
+    } else {
+      showGate();
+    }
+
+    initComponents();
+  </script>
+</body>
+</html>

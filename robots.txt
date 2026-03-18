@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Sitemap: https://5000millas.com/sitemap.xml
+
+Disallow: /api/
+Disallow: /_vercel/
