@@ -235,11 +235,12 @@ function renderDesafioCard(desafio) {
         <div style="display:flex;gap:0.5rem;margin-bottom:1rem;">
           <span class="badge badge-${desafio.categoria}">${cat.emoji} ${cat.nombre}</span>
           ${statusBadge}
-          ${desafio.gratuito ? '<span class="badge badge-gratis">Gratuito</span>' : ''}
+          ${desafio.gratuito ? '<span class="badge badge-gratis">Gratuito</span>' : '<span class="badge badge-premium">Premium</span>'}
         </div>
         <div class="desafio-titulo">${desafio.titulo}</div>
         <div class="desafio-subtitulo">${desafio.subtitulo}</div>
-        ${desafio.activo ? `<button class="btn btn-primary" style="margin:1rem 0;" onclick="abrirModal('${desafio.cursoId || desafio.id}')">Empezar desafío gratis</button>` : ''}
+        ${desafio.activo && desafio.gratuito ? `<button class="btn btn-primary" style="margin:1rem 0;" onclick="abrirModal('${desafio.cursoId || desafio.id}')">Empezar desafío gratis</button>` : ''}
+        ${desafio.activo && !desafio.gratuito && desafio.stripeLink ? `<a href="${desafio.stripeLink}" class="btn-stripe" style="margin:1rem 0;display:inline-flex;">Acceder — €${desafio.precio || 47}</a>` : ''}
         ${desafio.semanas.length > 0 ? `<div class="desafio-semanas">${semanasHTML}</div>` : '<p style="color:var(--blanco-muted);font-style:italic;">Contenido próximamente...</p>'}
       </div>
     </div>
