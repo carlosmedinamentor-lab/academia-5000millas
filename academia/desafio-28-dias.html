@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Desafío de 28 Días — Un Encuentro Conmigo Mismo. Transformación personal gratuita con el Método BDL de Carlos Medina.">
+  <meta name="keywords" content="desafío 28 días, transformación personal, Carlos Medina, método BDL, autoconocimiento">
+  <meta name="author" content="Carlos Medina">
+  <meta property="og:title" content="Desafío 28 Días — Academia 5.000 Millas">
+  <meta property="og:description" content="28 días de inmersión total en el Método BDL. Lecciones grabadas a las 3am. Gratuito.">
+  <meta property="og:image" content="https://img.youtube.com/vi/18S7wyLvZYw/maxresdefault.jpg">
+  <meta property="og:url" content="https://5000millas.com/academia/desafio-28-dias">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Desafío 28 Días — Un Encuentro Conmigo Mismo">
+  <meta name="twitter:description" content="28 días de transformación personal gratuita. Método BDL.">
+  <meta name="twitter:image" content="https://img.youtube.com/vi/18S7wyLvZYw/maxresdefault.jpg">
+  <title>Desafío 28 Días — Academia 5.000 Millas</title>
+  <link rel="stylesheet" href="../css/academia.css">
+  <link rel="stylesheet" href="../css/academia-premium.css">
+</head>
+<body>
+
+  <div id="header"></div>
+
+  <main>
+    <!-- Hero -->
+    <section class="course-hero">
+      <div class="course-hero-bg" style="background-image:url('https://img.youtube.com/vi/18S7wyLvZYw/maxresdefault.jpg');"></div>
+      <div class="course-hero-content">
+        <div style="display:flex;gap:0.5rem;margin-bottom:1rem;">
+          <span class="badge badge-diamante">&#128142; Diamante</span>
+          <span class="badge badge-gratis">Gratuito</span>
+        </div>
+        <h1 class="curso-titulo">Desaf&iacute;o 28 D&iacute;as</h1>
+        <p class="curso-subtitulo-page" style="max-width:600px;">Un Encuentro Conmigo Mismo &mdash; Lecciones grabadas a las 3am en 2021, cuando el viaje apenas comenzaba.</p>
+        <div style="display:flex;gap:1rem;flex-wrap:wrap;margin-top:1.5rem;">
+          <a href="#inscripcion" class="btn btn-primary btn-lg">Inscribirme ahora &mdash; Gratis</a>
+        </div>
+        <div class="hero-stats" style="margin-top:2rem;">
+          <div class="hero-stat"><span class="hero-stat-number font-mono">28</span><span class="hero-stat-label">Lecciones</span></div>
+          <div class="hero-stat"><span class="hero-stat-number font-mono">4</span><span class="hero-stat-label">Semanas</span></div>
+          <div class="hero-stat"><span class="hero-stat-number font-mono">43</span><span class="hero-stat-label">P&aacute;g. Workbook</span></div>
+          <div class="hero-stat"><span class="hero-stat-number font-mono">&euro;0</span><span class="hero-stat-label">Precio</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Workbook Mockup -->
+    <section class="section" style="border-top:1px solid var(--border);">
+      <div class="container">
+        <div class="workbook-mockup-container">
+          <div class="workbook-mockup">
+            <img src="https://img.youtube.com/vi/18S7wyLvZYw/maxresdefault.jpg" alt="Workbook Desaf&iacute;o 28 D&iacute;as">
+            <span class="workbook-badge">43 P&Aacute;GINAS</span>
+          </div>
+          <div class="workbook-info" style="max-width:400px;">
+            <h3>Workbook Incluido</h3>
+            <p>43 p&aacute;ginas de ejercicios, reflexiones y herramientas del M&eacute;todo BDL dise&ntilde;adas para acompa&ntilde;ar cada d&iacute;a de tu transformaci&oacute;n.</p>
+            <span class="workbook-cta">Descarga inmediata al inscribirte</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Inscription Gate -->
+    <section class="section" id="inscripcion" style="border-top:1px solid var(--border);">
+      <div class="container">
+        <div id="gateSection">
+          <!-- JS will render gate or content -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Course Content (hidden until registration) -->
+    <div id="courseContent" style="display:none;">
+      <section class="section">
+        <div class="course-content">
+          <!-- Progress Bar -->
+          <div class="progress-container">
+            <div class="progress-label">
+              <span>Tu progreso</span>
+              <span id="progressText">0 / 28 lecciones</span>
+            </div>
+            <div class="progress-bar">
+              <div class="progress-fill" id="progressFill" style="width:0%;"></div>
+            </div>
+          </div>
+
+          <!-- Semana 1 -->
+          <div class="course-week">
+            <div class="course-week-banner">
+              <span class="course-week-banner-placeholder">&#9973; Semana 1 &mdash; El Despertar</span>
+            </div>
+            <h2 class="course-week-title">Semana 1 &mdash; El Barco &#9973;</h2>
+            <div id="week1Lessons"></div>
+          </div>
+
+          <!-- Semana 2 -->
+          <div class="course-week">
+            <div class="course-week-banner">
+              <span class="course-week-banner-placeholder">&#128142; Semana 2 &mdash; El Viaje Interior</span>
+            </div>
+            <h2 class="course-week-title">Semana 2 &mdash; El Diamante Interior &#128142;</h2>
+            <div id="week2Lessons"></div>
+          </div>
+
+          <!-- Semana 3 -->
+          <div class="course-week">
+            <div class="course-week-banner">
+              <span class="course-week-banner-placeholder">&#128142; Semana 3 &mdash; La Transformaci&oacute;n</span>
+            </div>
+            <h2 class="course-week-title">Semana 3 &mdash; El Diamante Exterior &#128142;</h2>
+            <div id="week3Lessons"></div>
+          </div>
+
+          <!-- Semana 4 -->
+          <div class="course-week">
+            <div class="course-week-banner">
+              <span class="course-week-banner-placeholder">&#129409; Semana 4 &mdash; El Le&oacute;n Despierta</span>
+            </div>
+            <h2 class="course-week-title">Semana 4 &mdash; El Le&oacute;n &#129409;</h2>
+            <div id="week4Lessons"></div>
+          </div>
+
+          <!-- Completion -->
+          <div class="course-completion">
+            <div style="font-size:3rem;margin-bottom:1rem;">&#129409;</div>
+            <h2>Has completado el desaf&iacute;o. <span class="text-oro">El Le&oacute;n ha despertado.</span></h2>
+            <p>28 d&iacute;as de transformaci&oacute;n. Tu nueva identidad est&aacute; en marcha.</p>
+            <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
+              <a href="desafio-7-dias.html" class="btn btn-primary btn-lg">Siguiente: Desaf&iacute;o 7 D&iacute;as</a>
+              <a href="https://5000millas.com" target="_blank" rel="noopener" class="btn btn-outline btn-lg">Diagn&oacute;stico BDL</a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- CTA -->
+    <section class="cta-section">
+      <div class="container">
+        <span class="section-label">&#9973; + &#128142; = &#129409;</span>
+        <h2>Lleva tu transformaci&oacute;n al <span class="text-oro">siguiente nivel</span></h2>
+        <p>Contin&uacute;a tu viaje con el Desaf&iacute;o de 7 D&iacute;as &mdash; transformaci&oacute;n intensiva.</p>
+        <a href="desafio-7-dias.html" class="btn btn-primary btn-lg">Desaf&iacute;o 7 D&iacute;as &rarr;</a>
+      </div>
+    </section>
+  </main>
+
+  <div id="footer"></div>
+
+  <script src="../js/cursos-data.js"></script>
+  <script src="../js/componentes.js"></script>
+  <script>
+    document.getElementById('header').innerHTML = renderHeader('academia');
+    document.getElementById('footer').innerHTML = renderFooter();
+    document.querySelectorAll('#header a, #footer a').forEach(function(a) {
+      var href = a.getAttribute('href');
+      if (href && !href.startsWith('http') && !href.startsWith('#') && !href.startsWith('/') && !href.startsWith('../')) {
+        a.setAttribute('href', '../' + href);
+      }
+    });
+
+    var CURSO_ID = 'desafio-28-dias-curso';
+    var PLAYLIST_ID = 'PLWxXlZghiePzTuw9oJseZVg8bgp4-o7Ll';
+    var TOTAL_LESSONS = 28;
+    var STORAGE_KEY = 'academia_progress_28dias';
+
+    // Lesson data per week
+    var weeks = [
+      { container: 'week1Lessons', start: 1, lessons: [
+        'Bienvenida al desaf\u00edo', 'El punto de partida', 'Tus m\u00e1scaras',
+        'La herida fundacional', 'Inventario de creencias', 'Tu l\u00ednea de tiempo', 'El verdadero norte'
+      ]},
+      { container: 'week2Lessons', start: 8, lessons: [
+        'La presi\u00f3n necesaria', 'Salud mental', 'Salud emocional',
+        'Salud f\u00edsica', 'Salud espiritual', 'Salud relacional', 'Integraci\u00f3n interior'
+      ]},
+      { container: 'week3Lessons', start: 15, lessons: [
+        'Salud financiera', 'Tu prop\u00f3sito', 'Comunica tu valor',
+        'L\u00edmites sanos', 'Tu marca personal', 'Sistemas que te sostienen', 'El diamante brilla'
+      ]},
+      { container: 'week4Lessons', start: 22, lessons: [
+        'La corona es tuya', 'Decisiones de le\u00f3n', 'El rugido \u2014 tu voz',
+        'Lidera sirviendo', 'Tu manada', 'El legado', 'El G\u00e9nesis \u2014 5.000 Millas'
+      ]}
+    ];
+
+    function getProgress() {
+      try { return JSON.parse(localStorage.getItem(STORAGE_KEY)) || {}; } catch(e) { return {}; }
+    }
+
+    function saveProgress(progress) {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(progress));
+    }
+
+    function updateProgressBar() {
+      var progress = getProgress();
+      var completed = Object.keys(progress).filter(function(k) { return progress[k]; }).length;
+      var pct = Math.round((completed / TOTAL_LESSONS) * 100);
+      document.getElementById('progressFill').style.width = pct + '%';
+      document.getElementById('progressText').textContent = completed + ' / ' + TOTAL_LESSONS + ' lecciones';
+    }
+
+    function toggleLesson(dayNum) {
+      var video = document.getElementById('lessonVideo_' + dayNum);
+      if (video) video.classList.toggle('open');
+    }
+
+    function toggleComplete(dayNum, el) {
+      var progress = getProgress();
+      progress[dayNum] = !progress[dayNum];
+      saveProgress(progress);
+      el.classList.toggle('completed', progress[dayNum]);
+      updateProgressBar();
+      event.stopPropagation();
+    }
+
+    function renderLessons() {
+      var progress = getProgress();
+      weeks.forEach(function(week) {
+        var html = '';
+        week.lessons.forEach(function(title, i) {
+          var dayNum = week.start + i;
+          var isComplete = progress[dayNum] || false;
+          html += '<div class="lesson-card">' +
+            '<div class="lesson-header" onclick="toggleLesson(' + dayNum + ')">' +
+              '<span class="lesson-number">D\u00eda ' + dayNum + '</span>' +
+              '<span class="lesson-title">' + title + '</span>' +
+              '<div class="lesson-check' + (isComplete ? ' completed' : '') + '" onclick="toggleComplete(' + dayNum + ', this)"></div>' +
+            '</div>' +
+            '<div class="lesson-video" id="lessonVideo_' + dayNum + '">' +
+              '<iframe src="https://www.youtube.com/embed/videoseries?list=' + PLAYLIST_ID + '&index=' + (dayNum) + '" title="D\u00eda ' + dayNum + ': ' + title + '" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>' +
+            '</div>' +
+          '</div>';
+        });
+        document.getElementById(week.container).innerHTML = html;
+      });
+      updateProgressBar();
+    }
+
+    // Gate logic
+    function showGate() {
+      document.getElementById('gateSection').innerHTML =
+        '<div class="gate-card glass-card">' +
+          '<h3>Empieza tu transformaci\u00f3n</h3>' +
+          '<p>Ingresa tus datos para acceder al Desaf\u00edo de 28 D\u00edas &mdash; 100% gratuito.</p>' +
+          '<form class="modal-form" onsubmit="submitGate(event)">' +
+            '<input type="text" class="modal-input" id="gateName" placeholder="Tu nombre" required>' +
+            '<input type="email" class="modal-input" id="gateEmail" placeholder="Tu email" required>' +
+            '<input type="tel" class="modal-input" id="gatePhone" placeholder="Tu WhatsApp (opcional)">' +
+            '<div class="modal-error" style="display:none;color:#e74c3c;font-size:0.875rem;"></div>' +
+            '<button type="submit" class="btn btn-primary btn-lg" style="width:100%;">Acceder al desaf\u00edo</button>' +
+          '</form>' +
+        '</div>';
+    }
+
+    function showContent() {
+      document.getElementById('gateSection').innerHTML =
+        '<div style="text-align:center;">' +
+          '<div style="font-size:2rem;margin-bottom:0.5rem;">&#9989;</div>' +
+          '<p style="color:var(--oro);font-family:var(--font-mono);font-size:0.8rem;letter-spacing:0.05em;">ACCESO DESBLOQUEADO</p>' +
+        '</div>';
+      document.getElementById('courseContent').style.display = 'block';
+      renderLessons();
+    }
+
+    async function submitGate(e) {
+      e.preventDefault();
+      var btn = e.target.querySelector('button[type="submit"]');
+      btn.textContent = 'Enviando...';
+      btn.disabled = true;
+
+      var firstName = document.getElementById('gateName').value.trim();
+      var email = document.getElementById('gateEmail').value.trim();
+      var phone = document.getElementById('gatePhone').value.trim();
+
+      try {
+        var res = await fetch(GHL_WEBHOOK_URL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            firstName: firstName,
+            email: email,
+            phone: phone,
+            curso: CURSO_ID,
+            source: 'Academia 5.000 Millas — Desaf\u00edo 28 D\u00edas'
+          })
+        });
+        if (!res.ok) throw new Error('Error');
+        markRegistered(firstName, email);
+        updateTopbar();
+        showContent();
+      } catch(err) {
+        btn.textContent = 'Acceder al desaf\u00edo';
+        btn.disabled = false;
+        var errorEl = e.target.querySelector('.modal-error');
+        if (errorEl) { errorEl.textContent = 'Hubo un problema. Int\u00e9ntalo de nuevo.'; errorEl.style.display = 'block'; }
+      }
+    }
+
+    // Init
+    if (isRegistered()) {
+      showContent();
+    } else {
+      showGate();
+    }
+
+    initComponents();
+  </script>
+</body>
+</html>

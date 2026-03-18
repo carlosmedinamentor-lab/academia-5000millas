@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://5000millas.com/</loc><priority>1.0</priority><changefreq>weekly</changefreq></url>
+  <url><loc>https://5000millas.com/catalogo</loc><priority>0.9</priority><changefreq>weekly</changefreq></url>
+  <url><loc>https://5000millas.com/desafios</loc><priority>0.8</priority><changefreq>weekly</changefreq></url>
+  <url><loc>https://5000millas.com/academia</loc><priority>0.9</priority><changefreq>weekly</changefreq></url>
+  <url><loc>https://5000millas.com/academia/desafio-28-dias</loc><priority>0.9</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://5000millas.com/academia/desafio-7-dias</loc><priority>0.9</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://5000millas.com/academia/inteligencia-emocional</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://5000millas.com/curso?id=desafio-28-dias-curso</loc><priority>0.7</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://5000millas.com/curso?id=despierta-7-dias</loc><priority>0.7</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://5000millas.com/curso?id=workshop-5000-millas</loc><priority>0.7</priority><changefreq>monthly</changefreq></url>
+</urlset>

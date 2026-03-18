@@ -89,7 +89,8 @@ function renderHeader(paginaActiva) {
   const nav = [
     { label: 'Inicio', href: 'index.html', id: 'inicio' },
     { label: 'Cursos', href: 'catalogo.html', id: 'cursos' },
-    { label: 'Desafíos', href: 'desafios.html', id: 'desafios' }
+    { label: 'Desafíos', href: 'desafios.html', id: 'desafios' },
+    { label: 'Academia', href: 'academia/index.html', id: 'academia' }
   ];
 
   const links = nav.map(item => {

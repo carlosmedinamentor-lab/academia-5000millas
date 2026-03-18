@@ -116,10 +116,13 @@ const CURSOS = [
     titulo: 'Despierta o Morirás Dos Veces: Desafío de 7 Días',
     subtitulo: 'Basado en el libro de Carlos Medina',
     categoria: 'barco',
-    nivel: 'Gratuito',
+    nivel: 'Premium',
     duracion: '7 días',
     totalLecciones: 8,
-    gratuito: true,
+    gratuito: false,
+    precio: 47,
+    moneda: 'EUR',
+    stripeLink: 'https://buy.stripe.com/6oUaEY3BW2VH2yF4lngUM0T',
     destacado: true,
     youtubeId: null,
     playlistId: 'PLWxXlZghiePx6gJI_hN6Upoz83u-Dy4n5',
@@ -184,6 +187,39 @@ const CURSOS = [
         descripcion: 'Masterclass del Método 5.000 Millas — Barco, Diamante y León.',
         lecciones: [
           { titulo: 'Workshop 5.000 Millas — Método BDL Completo', duracion: 'Sesión completa', youtubeId: 'WtVrY9SKB84' }
+        ]
+      }
+    ]
+  }
+  {
+    id: 'inteligencia-emocional',
+    titulo: 'Inteligencia Emocional: Los Secretos que Nadie te Enseñó',
+    subtitulo: 'Mini curso de inteligencia emocional aplicada',
+    categoria: 'leon',
+    nivel: 'Gratuito',
+    duracion: '5 lecciones',
+    totalLecciones: 5,
+    gratuito: true,
+    destacado: true,
+    youtubeId: null,
+    playlistId: null,
+    descripcion: 'Descubre los secretos de la inteligencia emocional aplicada a tu vida, relaciones y negocio. Autoconciencia, regulación emocional y empatía.',
+    beneficios: [
+      'Comprende y gestiona tus emociones',
+      'Mejora tus relaciones interpersonales',
+      'Lidera desde la empatía y el autocontrol',
+      'Herramientas prácticas inmediatas'
+    ],
+    modulos: [
+      {
+        titulo: 'Inteligencia Emocional',
+        descripcion: 'Los secretos que nadie te enseñó sobre tus emociones.',
+        lecciones: [
+          { titulo: '¿Qué es la inteligencia emocional?', duracion: 'Video' },
+          { titulo: 'Autoconciencia: conoce tus emociones', duracion: 'Video' },
+          { titulo: 'Regulación emocional: siente sin huir', duracion: 'Video' },
+          { titulo: 'Empatía y habilidades sociales', duracion: 'Video' },
+          { titulo: 'Inteligencia emocional en acción', duracion: 'Video' }
         ]
       }
     ]
@@ -262,7 +298,8 @@ const DESAFIOS = [
     titulo: 'Desafío 7 Días: Despierta o Morirás Dos Veces',
     subtitulo: 'Basado en el libro de Carlos Medina — Despierta tu grandeza en 7 días',
     categoria: 'barco',
-    gratuito: true,
+    gratuito: false,
+    precio: 47,
     activo: true,
     youtubeId: null,
     playlistId: 'PLWxXlZghiePx6gJI_hN6Upoz83u-Dy4n5',
