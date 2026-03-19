@@ -50,6 +50,7 @@ function renderVideoGate(thumbUrl, cursoId, emoji) {
  * Retorna el thumbnail URL para un curso (maxresdefault).
  */
 function getVideoThumbnail(curso) {
+  if (curso.thumbnail) return curso.thumbnail;
   if (curso.youtubeId) return `https://img.youtube.com/vi/${curso.youtubeId}/maxresdefault.jpg`;
   return null;
 }
@@ -141,7 +142,7 @@ function renderFooter() {
 /* ── Curso Card ── */
 function renderCursoCard(curso) {
   const cat = CATEGORIAS[curso.categoria];
-  const thumbnail = getYouTubeThumbnail(curso.youtubeId);
+  const thumbnail = curso.thumbnail || getYouTubeThumbnail(curso.youtubeId);
   const thumbContent = thumbnail
     ? `<img src="${thumbnail}" alt="${curso.titulo}" loading="lazy">`
     : `<span class="curso-card-thumb-placeholder">${cat.emoji}</span>`;
